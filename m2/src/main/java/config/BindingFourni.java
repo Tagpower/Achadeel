@@ -1,3 +1,8 @@
+package config;
+
+import port.PortComposantFourni;
+import port.PortConfigurationFourni;
+
 /**
  * Created by clement on 17/10/16.
  */

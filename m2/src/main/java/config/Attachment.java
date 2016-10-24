@@ -1,3 +1,8 @@
+package config;
+
+import connecteur.Role;
+import port.PortComposant;
+
 /**
  * Created by clement on 17/10/16.
  */

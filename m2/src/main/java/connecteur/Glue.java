@@ -1,3 +1,5 @@
+package connecteur;
+
 import java.util.ArrayList;
 import java.util.List;
 

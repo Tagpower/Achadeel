@@ -1,3 +1,8 @@
+package connecteur;
+
+import interfaces.InterfaceConnecteurFrom;
+import interfaces.InterfaceConnecteurTo;
+
 /**
  * Created by clement on 17/10/16.
  */
