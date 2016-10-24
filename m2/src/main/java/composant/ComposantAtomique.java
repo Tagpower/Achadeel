@@ -10,7 +10,7 @@ public class ComposantAtomique extends Composant {
     private String nom;
 
     public ComposantAtomique(String nom) {
-        super(nom);
+        super();
     }
 
 

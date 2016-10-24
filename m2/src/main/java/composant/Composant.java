@@ -1,5 +1,6 @@
 package composant;
 
+import port.Port;
 import port.PortComposantFourni;
 import port.PortComposantRequis;
 
@@ -8,26 +9,26 @@ import java.util.List;
 /**
  * Created by clement on 17/10/16.
  */
-public /*abstract ?*/ class Composant {
+public abstract class Composant {
 
-    private List<PortComposantFourni> portFourni;
-    private List<PortComposantRequis> portRequis;
+    private List<Port> portFourni;
+    private List<Port> portRequis;
     private String nom;
 
 
-    public List<PortComposantFourni> getPortFourni() {
+    public List<Port> getPortFourni() {
         return portFourni;
     }
 
-    public void setPortFourni(List<PortComposantFourni> portFourni) {
+    public void setPortFourni(List<Port> portFourni) {
         this.portFourni = portFourni;
     }
 
-    public List<PortComposantRequis> getPortRequis() {
+    public List<Port> getPortRequis() {
         return portRequis;
     }
 
-    public void setPortRequis(List<PortComposantRequis> portRequis) {
+    public void setPortRequis(List<Port> portRequis) {
         this.portRequis = portRequis;
     }
 
