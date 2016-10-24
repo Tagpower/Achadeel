@@ -5,4 +5,7 @@ package port;
  */
 public class PortConfigurationRequis extends PortConfiguration {
 
+    public PortConfigurationRequis(String nom) {
+        super(nom);
+    }
 }

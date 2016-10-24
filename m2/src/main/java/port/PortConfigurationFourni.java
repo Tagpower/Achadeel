@@ -5,4 +5,7 @@ package port;
  */
 public class PortConfigurationFourni extends PortConfiguration {
 
+    public PortConfigurationFourni(String nom) {
+        super(nom);
+    }
 }
