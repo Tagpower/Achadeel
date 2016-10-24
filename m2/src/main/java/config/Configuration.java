@@ -1,5 +1,8 @@
 package config;
 
+import composant.Composant;
+import connecteur.Connecteur;
+
 import java.util.List;
 
 /**
@@ -7,7 +10,6 @@ import java.util.List;
  */
 public class Configuration {
 
-    private InterfaceConfiguration inter;
     private List<Composant> composants;
     private List<Connecteur> connecteurs;
 
