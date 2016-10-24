@@ -1,7 +1,7 @@
 package port;
 
 
-import config.Configuration;
+import composant.Configuration;
 
 /**
  * Created by clement on 17/10/16.

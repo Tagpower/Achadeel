@@ -1,9 +1,5 @@
 package port;
 
-import composant.Composant;
-
-import java.util.List;
-
 /**
  * Created by clement on 17/10/16.
  */
@@ -13,6 +9,7 @@ public abstract class Port {
     public Port(String nom){
         this.nom = nom;
     }
+
     public String getNom() {
         return nom;
     }
