@@ -1,5 +1,8 @@
 package connecteur;
 
+import config.Configuration;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,8 +10,12 @@ import java.util.List;
  */
 public class Connecteur {
 
-    private List<RoleFourni> r_fournis;
-    private List<RoleRequis> r_requis;
+    private Configuration parent;
+
     private Glue glue;
 
+    public Connecteur(Configuration parent, Glue glue) {
+        this.parent = parent;
+        this.glue = glue;
+    }
 }

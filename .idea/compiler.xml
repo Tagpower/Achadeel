@@ -26,6 +26,9 @@
         <module name="m2" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Achadeel" target="1.5" />
+      <module name="m2" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
