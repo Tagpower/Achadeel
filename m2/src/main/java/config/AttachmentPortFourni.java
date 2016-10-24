@@ -1,6 +1,8 @@
 package config;
 
+import connecteur.Role;
 import connecteur.RoleRequis;
+import port.PortComposant;
 import port.PortComposantFourni;
 
 /**
@@ -8,9 +10,11 @@ import port.PortComposantFourni;
  */
 public class AttachmentPortFourni extends Attachment {
 
-    private PortComposantFourni port_comp;
-    private RoleRequis role;
+    PortComposantFourni portFourni;
+    RoleRequis roleRequis;
 
-
-
+    public AttachmentPortFourni(PortComposantFourni port, RoleRequis role) {
+        this.portFourni = port;
+        this.roleRequis = role;
+    }
 }

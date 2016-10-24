@@ -1,6 +1,8 @@
 package connecteur;
 
-import config.Configuration;
+
+
+import composant.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,22 @@ public class Connecteur {
 
     public Connecteur(Configuration parent, Glue glue) {
         this.parent = parent;
+        this.glue = glue;
+    }
+
+    public Configuration getParent() {
+        return parent;
+    }
+
+    public void setParent(Configuration parent) {
+        this.parent = parent;
+    }
+
+    public Glue getGlue() {
+        return glue;
+    }
+
+    public void setGlue(Glue glue) {
         this.glue = glue;
     }
 }

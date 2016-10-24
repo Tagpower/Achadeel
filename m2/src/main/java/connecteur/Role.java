@@ -5,9 +5,10 @@ package connecteur;
  */
 public abstract class Role {
     private Connecteur parent;
+    private String nom;
 
-    public Role(){
-
+    public Role(String nom){
+        this.nom = nom;
     }
 
     public Connecteur getParent() {

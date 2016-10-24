@@ -1,8 +1,15 @@
 package composant;
 
 import config.Attachment;
+import config.AttachmentPortFourni;
+import config.AttachmentPortRequis;
 import config.Binding;
 import connecteur.Connecteur;
+import connecteur.RoleFourni;
+import connecteur.RoleRequis;
+import port.PortComposant;
+import port.PortComposantFourni;
+import port.PortComposantRequis;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +26,30 @@ public class Configuration extends Composant {
     private Map<String, Attachment> attachments;
     private Map<String, Binding> bindings;
 
-    public Configuration (String nom, ArrayList<Composant> comps) {
-        super.setNom(nom);
-        composants = comps;
-
+    public Configuration (String nom) {
+        super(nom);
     }
 
     public void addComposant(Composant c) {
         this.composants.add(c);
     }
 
+    public void addConnecteur(Connecteur c) { this.connecteurs.add(c);}
+
+    public void addAttachmentSend(Composant composant, Connecteur conneteur, String nomSend) {
+        PortComposantFourni p_Fourni = new PortComposantFourni(nomSend);
+        RoleRequis r_Requis = new RoleRequis(nomSend);
+        composant.addPortsFourni(p_Fourni);
+        conneteur.getGlue().addRoleRequis(r_Requis);
+        attachments.put(nomSend, new AttachmentPortFourni(p_Fourni, r_Requis));
+    }
+
+    public void addAttachmentReceive(Composant composant, Connecteur conneteur, String nomReceive){
+        PortComposantRequis p_Requis = new PortComposantRequis(nomReceive);
+        RoleFourni r_Fourni = new RoleFourni(nomReceive);
+        composant.addPortRequis(p_Requis);
+        conneteur.getGlue().addRoleFourni(r_Fourni);
+        attachments.put(nomReceive, new AttachmentPortRequis(p_Requis, r_Fourni));
+    }
 
 }

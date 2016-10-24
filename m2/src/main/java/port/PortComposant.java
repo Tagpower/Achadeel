@@ -11,6 +11,8 @@ public class PortComposant extends Port {
     public PortComposant(String nom){
         super(nom);
     }
+
+
     public Composant getParent() {
         return parent;
     }

@@ -11,6 +11,9 @@ public abstract class Attachment {
     private PortComposant port;
     private Role role;
 
+    public Attachment() {
+    }
+
     public PortComposant getPort() {
         return port;
     };

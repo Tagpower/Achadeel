@@ -17,9 +17,12 @@ public class Glue {
         roleRequis = new ArrayList<RoleRequis>();
     }
 
-    public void addRole(RoleFourni r1, RoleRequis r2) {
-        roleFourni.add(r1);
-        roleRequis.add(r2);
-    };
+    public void addRoleFourni(RoleFourni r) {
+        roleFourni.add(r);
+    }
+
+    public void addRoleRequis(RoleRequis r) {
+        roleRequis.add(r);
+    }
 
 }
