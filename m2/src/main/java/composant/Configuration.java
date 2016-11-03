@@ -7,11 +7,11 @@ import config.Binding;
 import connecteur.Connecteur;
 import connecteur.RoleFourni;
 import connecteur.RoleRequis;
-import port.PortComposant;
 import port.PortComposantFourni;
 import port.PortComposantRequis;
+import port.PortConfigurationFourni;
+import port.PortConfigurationRequis;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +25,9 @@ public class Configuration extends Composant {
 
     private Map<String, Attachment> attachments;
     private Map<String, Binding> bindings;
+
+    private List<PortConfigurationFourni> ports_fournis;
+    private List<PortConfigurationRequis> ports_requis;
 
     public Configuration (String nom) {
         super(nom);

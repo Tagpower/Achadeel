@@ -12,7 +12,6 @@ public class PortComposant extends Port {
         super(nom);
     }
 
-
     public Composant getParent() {
         return parent;
     }
