@@ -1,5 +1,6 @@
 package serveur.clearance;
 
+import connecteur.Connecteur;
 import connecteur.RoleRequis;
 
 /**
@@ -7,7 +8,8 @@ import connecteur.RoleRequis;
  */
 public class Connect_caller extends RoleRequis {
 
-    public Connect_caller(String nom) {
+    public Connect_caller(Connecteur parent, String nom) {
         super(nom);
+        this.setParent(parent);
     }
 }

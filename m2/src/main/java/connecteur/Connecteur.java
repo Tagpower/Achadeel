@@ -3,7 +3,6 @@ package connecteur;
 
 
 import composant.Configuration;
-
 import java.util.ArrayList;
 import java.util.List;
 
