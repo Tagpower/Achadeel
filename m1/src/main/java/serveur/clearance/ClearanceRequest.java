@@ -10,11 +10,11 @@ import connecteur.Glue;
 public class ClearanceRequest extends Connecteur {
 
     public ClearanceRequest(Configuration parent) {
-        super(parent, new Glue());
-        this.getGlue().addRoleRequis(new Connect_caller("connect_caller"));
-        this.getGlue().addRoleFourni(new Connect_called("connect_called"));
-        this.getGlue().addRoleRequis(new Sec_caller("sec_caller"));
-        this.getGlue().addRoleFourni(new Sec_called("sec_called"));
+        super(parent);
+        this.addRoleRequis(new Connect_caller("connect_caller"));
+        this.addRoleFourni(new Connect_called("connect_called"));
+        this.addRoleRequis(new Sec_caller("sec_caller"));
+        this.addRoleFourni(new Sec_called("sec_called"));
 
     }
 
