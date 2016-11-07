@@ -16,6 +16,7 @@ public abstract class Composant {
     private List<Port> portRequis;
     private Composant parent;
 
+
     public Composant(Composant parent) {
         this.parent = parent;
         this.portFourni = new ArrayList<Port>();

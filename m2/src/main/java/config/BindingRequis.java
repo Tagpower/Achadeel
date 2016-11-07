@@ -1,5 +1,6 @@
 package config;
 
+import composant.Composant;
 import port.PortComposantRequis;
 import port.PortConfigurationRequis;
 
@@ -13,7 +14,8 @@ public class BindingRequis extends Binding {
     private PortConfigurationRequis p_conf;
     private PortComposantRequis p_comp;
 
-    public BindingRequis(PortConfigurationRequis pcf, PortComposantRequis pcp) {
+    public BindingRequis(Composant parent, PortConfigurationRequis pcf, PortComposantRequis pcp) {
+        super(parent);
         p_conf = pcf;
         p_comp = pcp;
     }

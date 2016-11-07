@@ -1,5 +1,6 @@
 package config;
 
+import composant.Composant;
 import port.PortComposantFourni;
 import port.PortConfigurationFourni;
 
@@ -13,7 +14,8 @@ public class BindingFourni extends Binding {
     private PortConfigurationFourni p_conf;
     private PortComposantFourni p_comp;
 
-    public BindingFourni(PortConfigurationFourni pcf, PortComposantFourni pcp) {
+    public BindingFourni(Composant parent, PortConfigurationFourni pcf, PortComposantFourni pcp) {
+        super(parent);
         p_conf = pcf;
         p_comp = pcp;
     }

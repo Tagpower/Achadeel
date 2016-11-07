@@ -1,3 +1,4 @@
+import composant.Configuration;
 import port.PortConfigurationFourni;
 import port.PortConfigurationRequis;
 
@@ -6,6 +7,7 @@ import port.PortConfigurationRequis;
  */
 public class Client_in extends PortConfigurationRequis {
 
-
-
+    public Client_in(Configuration parent, String nom) {
+        super(parent, nom);
+    }
 }

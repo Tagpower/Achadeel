@@ -8,7 +8,6 @@ import connecteur.RoleFourni;
  */
 public class Connect_called extends RoleFourni {
     public Connect_called(Connecteur parent, String nom) {
-        super(nom);
-        this.setParent(parent);
+        super(parent, nom);
     }
 }

@@ -9,7 +9,16 @@ public abstract class Role extends Observable {
     private Connecteur parent;
     private String nom;
 
-    public Role(String nom){
+    public Role(Connecteur parent, String nom){
+        this.parent = parent;
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
         this.nom = nom;
     }
 

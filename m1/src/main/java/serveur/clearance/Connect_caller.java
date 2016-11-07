@@ -9,7 +9,6 @@ import connecteur.RoleRequis;
 public class Connect_caller extends RoleRequis {
 
     public Connect_caller(Connecteur parent, String nom) {
-        super(nom);
-        this.setParent(parent);
+        super(parent, nom);
     }
 }

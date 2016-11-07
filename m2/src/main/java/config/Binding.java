@@ -1,6 +1,7 @@
 package config;
 
 import composant.Composant;
+import composant.Configuration;
 import port.PortComposant;
 import port.PortConfiguration;
 
@@ -12,19 +13,20 @@ import java.util.Observer;
  */
 public abstract class Binding extends Observable implements Observer {
 
-    private Composant parent;
+    private Configuration parent;
     private PortConfiguration p_conf;
     private PortComposant p_comp;
 
-    public Binding() {
+    public Binding(Configuration parent) {
         super();
+        this.parent = parent;
     }
 
-    public void setParent(Composant c) {
+    public void setParent(Configuration c) {
         this.parent = c;
     }
 
-    public Composant getParent() {
+    public Configuration getParent() {
         return this.parent;
     }
 

@@ -9,7 +9,6 @@ import connecteur.RoleRequis;
  */
 public class Sec_caller extends RoleFourni {
     public Sec_caller(Connecteur parent, String nom) {
-        super(nom);
-        this.setParent(parent);
+        super(parent, nom);
     }
 }
