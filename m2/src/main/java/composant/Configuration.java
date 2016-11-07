@@ -37,7 +37,19 @@ public class Configuration extends Composant {
         this.composants.add(c);
     }
 
-    public void addConnecteur(Connecteur c) { this.connecteurs.add(c);}
+    public void addConnecteur(Connecteur c) {
+        this.connecteurs.add(c);
+    }
+
+    public void addPortsFourni(PortConfigurationFourni portFourni){
+        this.ports_fournis.add(portFourni);
+        portFourni.setParent(this);
+    }
+
+    public void addPortRequis(PortConfigurationRequis portRequis){
+        this.ports_requis.add(portRequis);
+        portRequis.setParent(this);
+    }
 
     public void addAttachmentSend(Composant composant, Connecteur conneteur, String nomSend) {
         PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);

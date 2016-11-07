@@ -14,11 +14,13 @@ public class Connecteur {
 
     private Configuration parent;
 
-    private Glue glue;
+    private List<RoleFourni> roleFourni;
+    private List<RoleRequis> roleRequis;
 
-    public Connecteur(Configuration parent, Glue glue) {
+    public Connecteur(Configuration parent) {
         this.parent = parent;
-        this.glue = glue;
+        roleFourni = new ArrayList<RoleFourni>();
+        roleRequis = new ArrayList<RoleRequis>();
     }
 
     public Configuration getParent() {
@@ -29,11 +31,12 @@ public class Connecteur {
         this.parent = parent;
     }
 
-    public Glue getGlue() {
-        return glue;
+    public void addRoleFourni(RoleFourni r) {
+        roleFourni.add(r);
     }
 
-    public void setGlue(Glue glue) {
-        this.glue = glue;
+    public void addRoleRequis(RoleRequis r) {
+        roleRequis.add(r);
     }
+
 }

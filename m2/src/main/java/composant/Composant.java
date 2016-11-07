@@ -55,4 +55,10 @@ public abstract class Composant {
         this.portRequis.add(portRequis);
         portRequis.setParent(this);
     }
+
+    public void sendMessage(PortComposantFourni port, String msg) {
+
+    }
+
+
 }
