@@ -1,5 +1,6 @@
 package serveur;
 
+import composant.Composant;
 import composant.Configuration;
 
 /**
@@ -7,6 +8,9 @@ import composant.Configuration;
  */
 public class Serveur extends Configuration {
 
+    public Serveur(Composant parent) {
+        super(parent);
+    }
 
 
 }

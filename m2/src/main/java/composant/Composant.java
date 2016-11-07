@@ -14,12 +14,20 @@ public abstract class Composant {
 
     private List<Port> portFourni;
     private List<Port> portRequis;
-    private String nom;
+    private Composant parent;
 
-    public Composant(String nom) {
-        this.nom = nom;
+    public Composant(Composant parent) {
+        this.parent = parent;
         this.portFourni = new ArrayList<Port>();
         this.portRequis = new ArrayList<Port>();
+    }
+
+    public Composant getParent() {
+        return parent;
+    }
+
+    public void setParent(Composant parent) {
+        this.parent = parent;
     }
 
     public List<Port> getPortFourni() {
@@ -36,14 +44,6 @@ public abstract class Composant {
 
     public void setPortRequis(List<Port> portRequis) {
         this.portRequis = portRequis;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public void addPortsFourni(PortComposantFourni portFourni){

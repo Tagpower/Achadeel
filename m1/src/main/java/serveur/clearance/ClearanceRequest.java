@@ -2,7 +2,6 @@ package serveur.clearance;
 
 import composant.Configuration;
 import connecteur.Connecteur;
-import connecteur.Glue;
 
 /**
  * Created by clement on 06/11/16.
