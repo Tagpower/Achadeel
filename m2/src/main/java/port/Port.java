@@ -2,8 +2,6 @@ package port;
 
 import composant.Composant;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
 
 /**
@@ -12,11 +10,10 @@ import java.util.Observable;
 public abstract class Port extends Observable {
     private String nom;
     private Composant parent;
-    private List<Service> services;
 
-    public Port(String nom){
+    public Port(Composant parent, String nom){
+        this.parent = parent;
         this.nom = nom;
-        this.services = new ArrayList<Service>();
     }
 
     public String getNom() {
@@ -35,12 +32,5 @@ public abstract class Port extends Observable {
         this.parent = parent;
     }
 
-    public void addService(Service s) {
-        this.services.add(s);
-    }
-
-    public List<Service> getServices() {
-        return services;
-    }
 
 }

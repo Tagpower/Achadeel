@@ -9,8 +9,8 @@ import composant.Configuration;
 public class PortConfiguration extends Port {
     public Configuration parent;
 
-    public PortConfiguration(String nom) {
-        super(nom);
+    public PortConfiguration(Configuration parent, String nom) {
+        super(parent, nom);
     }
 
     public Configuration getParent() {

@@ -2,8 +2,8 @@ package port;
 
 public abstract class ServiceRequis extends Service {
 	
-	public ServiceRequis(String serviceName) {
-		super(serviceName);
+	public ServiceRequis(String nom) {
+		super(nom);
 	}
 
 }

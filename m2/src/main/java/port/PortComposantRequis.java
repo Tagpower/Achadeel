@@ -1,5 +1,7 @@
 package port;
 
+import composant.Composant;
+
 import java.util.Observable;
 
 /**
@@ -7,20 +9,13 @@ import java.util.Observable;
  */
 public class PortComposantRequis extends PortComposant {
 
-    public PortComposantRequis(String nom) {
-        super(nom);
+    public PortComposantRequis(Composant parent, String nom) {
+        super(parent, nom);
     }
 
     public void update(Observable o, Object arg) {
-        System.out.println(this.getClass().getName()+".update");
-        for(Service s : this.getServices()) {
-            s.performAction(arg);
-        }
-    }
+        System.out.println(this.getClass().getName() + ".update");
 
-    public void addService(ServiceRequis s) {
-        super.addService(s);
     }
-
 
 }

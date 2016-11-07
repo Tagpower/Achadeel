@@ -40,7 +40,7 @@ public class Configuration extends Composant {
     public void addConnecteur(Connecteur c) { this.connecteurs.add(c);}
 
     public void addAttachmentSend(Composant composant, Connecteur conneteur, String nomSend) {
-        PortComposantFourni p_Fourni = new PortComposantFourni(nomSend);
+        PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);
         RoleRequis r_Requis = new RoleRequis(nomSend);
         composant.addPortsFourni(p_Fourni);
         conneteur.getGlue().addRoleRequis(r_Requis);
@@ -48,7 +48,7 @@ public class Configuration extends Composant {
     }
 
     public void addAttachmentReceive(Composant composant, Connecteur conneteur, String nomReceive){
-        PortComposantRequis p_Requis = new PortComposantRequis(nomReceive);
+        PortComposantRequis p_Requis = new PortComposantRequis(composant, nomReceive);
         RoleFourni r_Fourni = new RoleFourni(nomReceive);
         composant.addPortRequis(p_Requis);
         conneteur.getGlue().addRoleFourni(r_Fourni);

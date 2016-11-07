@@ -1,5 +1,7 @@
 package port;
 
+import composant.Configuration;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,16 +10,11 @@ import java.util.Observer;
  */
 public class PortConfigurationFourni extends PortConfiguration implements Observer {
 
-    public PortConfigurationFourni(String nom) {
-        super(nom);
+    public PortConfigurationFourni(Configuration parent, String nom) {
+        super(parent, nom);
     }
 
     public void update(Observable observable, Object o) {
 
     }
-
-    public void addService(ServiceFourni service) {
-        super.addService(service);
-    }
-
 }
