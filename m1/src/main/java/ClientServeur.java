@@ -7,8 +7,8 @@ import composant.Configuration;
 public class ClientServeur extends Configuration {
 
     public ClientServeur(String nom) {
-        super(nom);
-        this.addComposant(new Client(""));
+        super(null);
+        this.addComposant(new Client());
 
     }
 

@@ -1,9 +1,6 @@
 package composant;
 
-import config.Attachment;
-import config.AttachmentPortFourni;
-import config.AttachmentPortRequis;
-import config.Binding;
+import config.*;
 import connecteur.Connecteur;
 import connecteur.RoleFourni;
 import connecteur.RoleRequis;
@@ -29,8 +26,8 @@ public class Configuration extends Composant {
     private List<PortConfigurationFourni> ports_fournis;
     private List<PortConfigurationRequis> ports_requis;
 
-    public Configuration (String nom) {
-        super(nom);
+    public Configuration (Composant parent) {
+        super(parent);
     }
 
     public void addComposant(Composant c) {
@@ -41,7 +38,7 @@ public class Configuration extends Composant {
         this.connecteurs.add(c);
     }
 
-    public void addPortsFourni(PortConfigurationFourni portFourni){
+    public void addPortFourni(PortConfigurationFourni portFourni){
         this.ports_fournis.add(portFourni);
         portFourni.setParent(this);
     }
@@ -55,7 +52,7 @@ public class Configuration extends Composant {
         PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);
         RoleRequis r_Requis = new RoleRequis(nomSend);
         composant.addPortsFourni(p_Fourni);
-        conneteur.getGlue().addRoleRequis(r_Requis);
+        conneteur.addRoleRequis(r_Requis);
         attachments.put(nomSend, new AttachmentPortFourni(p_Fourni, r_Requis));
     }
 
@@ -63,8 +60,25 @@ public class Configuration extends Composant {
         PortComposantRequis p_Requis = new PortComposantRequis(composant, nomReceive);
         RoleFourni r_Fourni = new RoleFourni(nomReceive);
         composant.addPortRequis(p_Requis);
-        conneteur.getGlue().addRoleFourni(r_Fourni);
+        conneteur.addRoleFourni(r_Fourni);
         attachments.put(nomReceive, new AttachmentPortRequis(p_Requis, r_Fourni));
     }
+
+    public void addBindingFourni(Composant composant, Configuration config, String nom) {
+        PortComposantFourni port_comp = new PortComposantFourni(composant, nom);
+        PortConfigurationFourni port_conf = new PortConfigurationFourni(config, nom);
+        composant.addPortsFourni(port_comp);
+        config.addPortFourni(port_conf);
+        bindings.put(nom, new BindingFourni(port_conf, port_comp));
+    }
+
+    public void addBindingRequis(Composant composant, Configuration config, String nom) {
+        PortComposantRequis port_comp = new PortComposantRequis(composant, nom);
+        PortConfigurationRequis port_conf = new PortConfigurationRequis(config, nom);
+        composant.addPortRequis(port_comp);
+        config.addPortRequis(port_conf);
+        bindings.put(nom, new BindingRequis(port_conf, port_comp));
+    }
+
 
 }

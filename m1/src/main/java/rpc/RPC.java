@@ -8,14 +8,12 @@ import connecteur.Connecteur;
  */
 public class RPC extends Connecteur {
 
-/*    private FromClient c_caller;
-    private ToClient c_called;
-    private FromServer s_caller;
-    private ToServer s_called;
-*/
     public RPC(Configuration parent) {
         super(parent);
-
+        this.addRoleRequis(new FromClient("c_caller"));
+        this.addRoleFourni(new ToClient("c_called"));
+        this.addRoleRequis(new FromServer("s_caller"));
+        this.addRoleFourni(new ToServer("s_called"));
     }
 
 }

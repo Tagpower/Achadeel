@@ -7,10 +7,9 @@ public class ComposantAtomique extends Composant {
 
     //    private List<Propriete> props;
     //    private List<Contrainte> contr;
-    private String nom;
 
-    public ComposantAtomique(String nom) {
-        super(nom);
+    public ComposantAtomique(Composant parent) {
+        super(parent);
     }
 
 
