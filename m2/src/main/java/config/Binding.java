@@ -1,6 +1,5 @@
 package config;
 
-import composant.Composant;
 import composant.Configuration;
 import port.PortComposant;
 import port.PortConfiguration;

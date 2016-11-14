@@ -2,6 +2,7 @@ package composant;
 
 import config.*;
 import connecteur.Connecteur;
+import connecteur.ConnectionPoint;
 import connecteur.RoleFourni;
 import connecteur.RoleRequis;
 import port.PortComposantFourni;
@@ -20,8 +21,8 @@ public class Configuration extends Composant {
     private List<Composant> composants;
     private List<Connecteur> connecteurs;
 
-    private Map<String, Attachment> attachments;
-    private Map<String, Binding> bindings;
+    private Map<ConnectionPoint, Attachment> attachments;
+    private Map<ConnectionPoint, Binding> bindings;
 
     private List<PortConfigurationFourni> ports_fournis;
     private List<PortConfigurationRequis> ports_requis;
@@ -48,20 +49,20 @@ public class Configuration extends Composant {
         portRequis.setParent(this);
     }
 
-    public void addAttachmentSend(Composant composant, Connecteur conneteur, String nomSend) {
+    public void addAttachmentSend(Composant composant, Connecteur connecteur, String nomSend) {
         PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);
-        RoleRequis r_Requis = new RoleRequis(conneteur,nomSend);
+        RoleRequis r_Requis = new RoleRequis(connecteur,nomSend);
         composant.addPortsFourni(p_Fourni);
-        conneteur.addRoleRequis(r_Requis);
-        attachments.put(nomSend, new AttachmentPortFourni(this, p_Fourni, r_Requis));
+        connecteur.addRoleRequis(r_Requis);
+        attachments.put(p_Fourni, new AttachmentPortFourni(this, p_Fourni, r_Requis));
     }
 
-    public void addAttachmentReceive(Composant composant, Connecteur conneteur, String nomReceive){
+    public void addAttachmentReceive(Composant composant, Connecteur connecteur, String nomReceive){
         PortComposantRequis p_Requis = new PortComposantRequis(composant, nomReceive);
-        RoleFourni r_Fourni = new RoleFourni(conneteur,nomReceive);
+        RoleFourni r_Fourni = new RoleFourni(connecteur,nomReceive);
         composant.addPortRequis(p_Requis);
-        conneteur.addRoleFourni(r_Fourni);
-        attachments.put(nomReceive, new AttachmentPortRequis(this, p_Requis, r_Fourni));
+        connecteur.addRoleFourni(r_Fourni);
+        attachments.put(r_Fourni, new AttachmentPortRequis(this, p_Requis, r_Fourni));
     }
 
     public void addBindingFourni(Composant composant, String nom) {
@@ -69,7 +70,7 @@ public class Configuration extends Composant {
         PortConfigurationFourni port_conf = new PortConfigurationFourni(this, nom);
         composant.addPortsFourni(port_comp);
         this.addPortFourni(port_conf);
-        bindings.put(nom, new BindingFourni(this, port_conf, port_comp));
+        bindings.put(port_conf, new BindingFourni(this, port_conf, port_comp));
     }
 
     public void addBindingRequis(Composant composant, String nom) {
@@ -77,7 +78,12 @@ public class Configuration extends Composant {
         PortConfigurationRequis port_conf = new PortConfigurationRequis(this, nom);
         composant.addPortRequis(port_comp);
         this.addPortRequis(port_conf);
-        bindings.put(nom, new BindingRequis(this, port_conf, port_comp));
+        bindings.put(port_comp, new BindingRequis(this, port_conf, port_comp));
     }
+
+    public void sendMessage(PortComposantFourni port, String msg) {
+
+    }
+
 
 }

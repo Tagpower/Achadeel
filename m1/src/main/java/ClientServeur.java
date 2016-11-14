@@ -3,15 +3,16 @@ import composant.Configuration;
 import connecteur.Connecteur;
 import rpc.RPC;
 import serveur.ServeurComposant;
-import serveur.ServeurConfiguration;
 
 /**
  * Created by clement on 01/11/16.
  */
 public class ClientServeur extends Configuration {
+   
     private Client client;
     private ServeurComposant serveurComposant;
     private Connecteur rpc;
+    
     public ClientServeur(String nom) {
         super(null);
         client = new Client(this);

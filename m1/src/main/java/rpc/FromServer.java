@@ -1,5 +1,6 @@
 package rpc;
 
+import connecteur.Connecteur;
 import connecteur.RoleRequis;
 
 /**
@@ -7,7 +8,7 @@ import connecteur.RoleRequis;
  */
 public class FromServer extends RoleRequis {
 
-    public FromServer(String nom) {
-        super(nom);
+    public FromServer(Connecteur parent, String nom) {
+        super(parent, nom);
     }
 }

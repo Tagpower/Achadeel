@@ -58,7 +58,9 @@ public abstract class Composant {
     }
 
     public void sendMessage(PortComposantFourni port, String msg) {
-
+        if (this instanceof ComposantAtomique) {
+            parent.sendMessage(port, msg);
+        }
     }
 
 

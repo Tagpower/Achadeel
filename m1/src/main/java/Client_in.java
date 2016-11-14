@@ -5,7 +5,7 @@ import port.PortConfigurationRequis;
 /**
  * Created by clement on 06/11/16.
  */
-public class Client_in extends PortConfigurationRequis {
+public class  Client_in extends PortConfigurationRequis {
 
     public Client_in(Configuration parent, String nom) {
         super(parent, nom);

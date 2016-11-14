@@ -1,11 +1,9 @@
 package connecteur;
 
-import java.util.Observable;
-
 /**
  * Created by clement on 17/10/16.
  */
-public abstract class Role extends Observable {
+public abstract class Role extends ConnectionPoint {
     private Connecteur parent;
     private String nom;
 

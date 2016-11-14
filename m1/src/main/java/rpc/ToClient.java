@@ -1,5 +1,6 @@
 package rpc;
 
+import connecteur.Connecteur;
 import connecteur.RoleFourni;
 
 /**
@@ -7,7 +8,7 @@ import connecteur.RoleFourni;
  */
 public class ToClient extends RoleFourni {
 
-    public ToClient(String nom) {
-        super(nom);
+    public ToClient(Connecteur parent, String nom) {
+        super(parent, nom);
     }
 }

@@ -5,6 +5,7 @@ public class AppM1 {
 
     public static void main(String args[]) {
         System.out.println("lole M1");
+        ClientServeur cs = new ClientServeur("cs");
     }
 
 }

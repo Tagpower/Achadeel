@@ -1,5 +1,6 @@
 package rpc;
 
+import connecteur.Connecteur;
 import connecteur.RoleFourni;
 
 /**
@@ -7,7 +8,7 @@ import connecteur.RoleFourni;
  */
 public class ToServer extends RoleFourni {
 
-    public ToServer(String nom) {
-        super(nom);
+    public ToServer(Connecteur parent, String nom) {
+        super(parent, nom);
     }
 }

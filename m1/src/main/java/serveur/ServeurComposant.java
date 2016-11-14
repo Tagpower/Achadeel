@@ -8,9 +8,11 @@ import composant.Configuration;
  * Created by naixinwang on 07/11/2016.
  */
 public class ServeurComposant extends ComposantAtomique {
+
     Configuration serveurConfiguration;
+
     public ServeurComposant(Composant parent) {
         super(parent);
-        this.serveurConfiguration = new ServeurConfiguration(this);
+        this.serveurConfiguration = new ServeurConfiguration(null);
     }
 }
