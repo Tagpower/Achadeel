@@ -80,5 +80,4 @@ public class Configuration extends Composant {
         bindings.put(nom, new BindingRequis(this, port_conf, port_comp));
     }
 
-
 }
