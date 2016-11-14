@@ -13,8 +13,8 @@ import java.util.Observable;
  */
 public class AttachmentPortFourni extends Attachment {
 
-    PortComposantFourni portFourni;
-    RoleRequis roleRequis;
+    private PortComposantFourni portFourni;
+    private RoleRequis roleRequis;
 
     public AttachmentPortFourni(Configuration parent, PortComposantFourni port, RoleRequis role) {
         super(parent);
@@ -22,9 +22,24 @@ public class AttachmentPortFourni extends Attachment {
         this.roleRequis = role;
     }
 
-    public void update(Observable o, Object arg) {
-        System.out.println(this.getClass().getName()+".update");
-        this.setChanged();
-        this.notifyObservers(arg);
+    public PortComposantFourni getPortFourni() {
+        return portFourni;
+    }
+
+    public void setPortFourni(PortComposantFourni portFourni) {
+        this.portFourni = portFourni;
+    }
+
+    public RoleRequis getRoleRequis() {
+        return roleRequis;
+    }
+
+    public void setRoleRequis(RoleRequis roleRequis) {
+        this.roleRequis = roleRequis;
+    }
+
+    public void send() {
+        roleRequis.setMessage(portFourni.getMessage());
+        roleRequis.getParent().send();
     }
 }

@@ -1,6 +1,8 @@
 import client.Client;
 import composant.Configuration;
 import connecteur.Connecteur;
+import connecteur.ConnectionPoint;
+import port.PortComposantFourni;
 import rpc.RPC;
 import serveur.ServeurComposant;
 
@@ -14,8 +16,8 @@ public class ClientServeur extends Configuration {
     private Connecteur rpc;
     
     public ClientServeur(String nom) {
-        super(null);
-        client = new Client(this);
+        super(nom, null);
+        client = new Client("client", this);
         serveurComposant = new ServeurComposant(this);
         rpc = new RPC(this);
         //serveurConfiguration = new ServeurConfiguration(this);
@@ -29,11 +31,18 @@ public class ClientServeur extends Configuration {
         */
         this.addBindingRequis(client, "ExchangeClientIn");
         this.addBindingFourni(client, "ExcnangeClientOut");
+
         this.addAttachmentReceive(serveurComposant,rpc, "ReceiveRequest");
         this.addAttachmentSend(serveurComposant, rpc, "SendResult");
         this.addAttachmentReceive(client,rpc, "ReceiveResult");
         this.addAttachmentSend(client, rpc, "SendRequest");
     }
 
+
+    // on initialise une configuration et lance le programme
+    public void start(){
+        //le msg est envoyé par le port de client nommé "SendRequest"
+        client.sendRequest("Set.nbapple" );
+    }
 
 }

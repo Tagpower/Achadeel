@@ -10,7 +10,7 @@ import java.util.Observer;
 /**
  * Created by clement on 17/10/16.
  */
-public abstract class Binding extends Observable implements Observer {
+public abstract class Binding{
 
     private Configuration parent;
     private PortConfiguration p_conf;
@@ -29,6 +29,8 @@ public abstract class Binding extends Observable implements Observer {
         return this.parent;
     }
 
+    public void send() {
 
+    }
 
 }

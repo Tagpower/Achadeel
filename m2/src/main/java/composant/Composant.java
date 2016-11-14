@@ -12,23 +12,15 @@ import java.util.List;
  */
 public abstract class Composant {
 
+    private String name;
     private List<Port> portFourni;
     private List<Port> portRequis;
-    private Composant parent;
 
 
-    public Composant(Composant parent) {
-        this.parent = parent;
+    public Composant(String name) {
+        this.name = name;
         this.portFourni = new ArrayList<Port>();
         this.portRequis = new ArrayList<Port>();
-    }
-
-    public Composant getParent() {
-        return parent;
-    }
-
-    public void setParent(Composant parent) {
-        this.parent = parent;
     }
 
     public List<Port> getPortFourni() {
@@ -57,11 +49,28 @@ public abstract class Composant {
         portRequis.setParent(this);
     }
 
-    public void sendMessage(PortComposantFourni port, String msg) {
-        if (this instanceof ComposantAtomique) {
-            parent.sendMessage(port, msg);
+    public Port getNamedPortRequis(String nameOfPort) {
+        Port port = null;
+        for (Port p : this.getPortRequis()) {
+            if(p.getNom() == nameOfPort) {
+                return port = p;
+            }
         }
+        return port;
     }
 
+    public Port getNamedPortFourni(String nameOfPort) {
+        Port port = null;
+        for (Port p : this.getPortFourni()) {
+            if(p.getNom() == nameOfPort) {
+                return port = p;
+            }
+        }
+        return port;
+    }
 
+    //méthode suivant quant le composant a recu un msg
+    public void send(){
+        //analyse ce qu'on va fait après
+    };
 }

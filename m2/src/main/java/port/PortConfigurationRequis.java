@@ -10,4 +10,5 @@ public class PortConfigurationRequis extends PortConfiguration {
     public PortConfigurationRequis(Configuration parent, String nom) {
         super(parent, nom);
     }
+
 }

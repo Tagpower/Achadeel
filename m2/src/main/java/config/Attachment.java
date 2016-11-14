@@ -10,22 +10,16 @@ import java.util.Observer;
 /**
  * Created by clement on 17/10/16.
  */
-public abstract class Attachment extends Observable implements Observer {
+public abstract class Attachment {
 
     private Configuration parent;
-    private PortComposant port;
-    private Role role;
+    //private PortComposant port;
+    //private Role role;
 
     public Attachment(Configuration parent) {
         this.parent = parent;
     }
 
-    public PortComposant getPort() {
-        return port;
-    };
-
-    public Role getRole() {
-        return role;
-    };
-
+    //passer le message de composant vers le connecteur ou l'inverse
+    public void send(){}
 }
