@@ -20,6 +20,10 @@ public class BindingRequis extends Binding {
         p_comp = pcp;
     }
 
+    public void transmettre() {
+        this.p_conf.setMessage(this.p_comp.getMessage());
+    }
+
     public void update(Observable o, Object arg) {
         this.setChanged();
         this.notifyObservers(arg);

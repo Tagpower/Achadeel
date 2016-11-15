@@ -1,9 +1,7 @@
 package config;
 
 import composant.Configuration;
-import connecteur.Role;
 import connecteur.RoleRequis;
-import port.PortComposant;
 import port.PortComposantFourni;
 
 import java.util.Observable;
@@ -20,6 +18,11 @@ public class AttachmentPortFourni extends Attachment {
         super(parent);
         this.portFourni = port;
         this.roleRequis = role;
+    }
+
+    public void transmettre() {
+        this.roleRequis.setMessage(this.portFourni.getMessage());
+        this.portFourni.setMessage("");
     }
 
     public void update(Observable o, Object arg) {

@@ -20,6 +20,10 @@ public class BindingFourni extends Binding {
         p_comp = pcp;
     }
 
+    public void transmettre() {
+        this.p_comp.setMessage(this.p_conf.getMessage());
+    }
+
     public void update(Observable o, Object arg) {
         this.setChanged();
         this.notifyObservers(arg);

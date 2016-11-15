@@ -1,12 +1,12 @@
 package serveur.connectionMgr;
 
-import client.Exchange_client_out;
 import composant.Composant;
+import composant.ComposantAtomique;
 
 /**
  * Created by clement on 06/11/16.
  */
-public class ConnectionManager extends Composant {
+public class ConnectionManager extends ComposantAtomique {
     public ConnectionManager(Composant parent) {
         super(parent);
         /*

@@ -21,13 +21,15 @@ public abstract class Binding extends Observable implements Observer {
         this.parent = parent;
     }
 
-    public void setParent(Configuration c) {
-        this.parent = c;
-    }
-
-    public Configuration getParent() {
-        return this.parent;
-    }
+//    public void setParent(Configuration c) {
+//        this.parent = c;
+//    }
+//
+//    public Configuration getParent() {
+//        return this.parent;
+//    }
+//
+    public void transmettre() {};
 
 
 

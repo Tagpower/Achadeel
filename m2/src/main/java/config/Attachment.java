@@ -28,4 +28,6 @@ public abstract class Attachment extends Observable implements Observer {
         return role;
     };
 
+    public void transmettre() {};
+
 }

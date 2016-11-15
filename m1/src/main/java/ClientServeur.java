@@ -18,7 +18,7 @@ public class ClientServeur extends Configuration {
         client = new Client(this);
         serveurComposant = new ServeurComposant(this);
         rpc = new RPC(this);
-        //serveurConfiguration = new ServeurConfiguration(this);
+
         this.addComposant(client);
         this.addComposant(serveurComposant);
         this.addConnecteur(rpc);
@@ -27,12 +27,19 @@ public class ClientServeur extends Configuration {
         this.addPortFourni(new Client_out(this, "ClientOut"));
         this.addPortRequis(new Client_in(this, "ClientIn"));
         */
-        this.addBindingRequis(client, "ExchangeClientIn");
-        this.addBindingFourni(client, "ExcnangeClientOut");
         this.addAttachmentReceive(serveurComposant,rpc, "ReceiveRequest");
         this.addAttachmentSend(serveurComposant, rpc, "SendResult");
         this.addAttachmentReceive(client,rpc, "ReceiveResult");
         this.addAttachmentSend(client, rpc, "SendRequest");
+        this.addBindingRequis(client, "ExchangeClientIn");
+        this.addBindingFourni(client, "ExchangeClientOut");
+
+        System.out.println("Attachments = " + getAttachments().toString());
+        System.out.println("Bindings = " + getBindings().toString());
+
+        client.sendMessage(client.getPortFournis().get(0), "AAAAA");
+
+
     }
 
 

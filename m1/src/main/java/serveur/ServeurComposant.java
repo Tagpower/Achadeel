@@ -13,6 +13,6 @@ public class ServeurComposant extends ComposantAtomique {
 
     public ServeurComposant(Composant parent) {
         super(parent);
-        this.serveurConfiguration = new ServeurConfiguration(null);
+        this.serveurConfiguration = new ServeurConfiguration(this);
     }
 }

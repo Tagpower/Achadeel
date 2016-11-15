@@ -1,14 +1,12 @@
 package client;
 
-import composant.Composant;
+import composant.ComposantAtomique;
 import composant.Configuration;
-import port.PortComposantFourni;
-import port.PortComposantRequis;
 
 /**
  * Created by clement on 03/11/16.
  */
-public class Client extends Composant {
+public class Client extends ComposantAtomique {
 
     public Client(Configuration parent){
         super(parent);

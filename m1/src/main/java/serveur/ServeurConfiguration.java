@@ -17,9 +17,9 @@ import serveur.sqlreq.SQLRequest;
 public class ServeurConfiguration extends Configuration {
     public ServeurConfiguration(Composant parent){
         super(parent);
-        Composant connectionManager = new ConnectionManager(this);
-        Composant databaseManager = new DatabaseManager(this);
-        Composant securityManager = new SecurityManager(this);
+        ComposantAtomique connectionManager = new ConnectionManager(this);
+        ComposantAtomique databaseManager = new DatabaseManager(this);
+        ComposantAtomique securityManager = new SecurityManager(this);
         Connecteur clearanceRequest = new ClearanceRequest(this);
         Connecteur securityQuery = new SecurityQuery(this);
         Connecteur sqlRequest = new SQLRequest(this);
@@ -35,8 +35,8 @@ public class ServeurConfiguration extends Configuration {
         //ajoute des bindings
         this.addBindingFourni(connectionManager, "requestIn");
         this.addBindingRequis(connectionManager, "requestOut");
-        this.addBindingFourni(parent, "requestOut");
-        this.addBindingRequis(parent, "requestIn");
+        this.addBindingFourni((ComposantAtomique)parent, "requestOut");
+        this.addBindingRequis((ComposantAtomique)parent, "requestIn");
 
 
         //ajoute des attachement dans la configuration Serveur

@@ -10,6 +10,8 @@ import port.PortComposantRequis;
 import port.PortConfigurationFourni;
 import port.PortConfigurationRequis;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,11 +26,67 @@ public class Configuration extends Composant {
     private Map<ConnectionPoint, Attachment> attachments;
     private Map<ConnectionPoint, Binding> bindings;
 
-    private List<PortConfigurationFourni> ports_fournis;
-    private List<PortConfigurationRequis> ports_requis;
+    private List<PortConfigurationFourni> portFournis;
+    private List<PortConfigurationRequis> portRequis;
 
     public Configuration (Composant parent) {
         super(parent);
+
+        composants = new ArrayList<Composant>();
+        connecteurs = new ArrayList<Connecteur>();
+        attachments = new HashMap<ConnectionPoint, Attachment>();
+        bindings = new HashMap<ConnectionPoint, Binding>();
+        portFournis = new ArrayList<PortConfigurationFourni>();
+        portRequis = new ArrayList<PortConfigurationRequis>();
+
+    }
+
+    public Map<ConnectionPoint, Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(Map<ConnectionPoint, Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    public Map<ConnectionPoint, Binding> getBindings() {
+        return bindings;
+    }
+
+    public void setBindings(Map<ConnectionPoint, Binding> bindings) {
+        this.bindings = bindings;
+    }
+
+    public List<Composant> getComposants() {
+        return composants;
+    }
+
+    public void setComposants(List<Composant> composants) {
+        this.composants = composants;
+    }
+
+    public List<Connecteur> getConnecteurs() {
+        return connecteurs;
+    }
+
+    public void setConnecteurs(List<Connecteur> connecteurs) {
+        this.connecteurs = connecteurs;
+    }
+
+    public List<PortConfigurationFourni> getPortsFournis() {
+        return portFournis;
+    }
+
+    public void setPortsFournis(List<PortConfigurationFourni> ports_fournis) {
+        this.portFournis = ports_fournis;
+    }
+
+    public List<PortConfigurationRequis> getPortsRequis() {
+        return portRequis;
+    }
+
+    public void setPortsRequis(List<PortConfigurationRequis> ports_requis) {
+        this.portRequis = ports_requis;
     }
 
     public void addComposant(Composant c) {
@@ -40,24 +98,24 @@ public class Configuration extends Composant {
     }
 
     public void addPortFourni(PortConfigurationFourni portFourni){
-        this.ports_fournis.add(portFourni);
+        this.portFournis.add(portFourni);
         portFourni.setParent(this);
     }
 
     public void addPortRequis(PortConfigurationRequis portRequis){
-        this.ports_requis.add(portRequis);
+        this.portRequis.add(portRequis);
         portRequis.setParent(this);
     }
 
-    public void addAttachmentSend(Composant composant, Connecteur connecteur, String nomSend) {
+    public void addAttachmentSend(ComposantAtomique composant, Connecteur connecteur, String nomSend) {
         PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);
         RoleRequis r_Requis = new RoleRequis(connecteur,nomSend);
-        composant.addPortsFourni(p_Fourni);
+        composant.addPortFourni(p_Fourni);
         connecteur.addRoleRequis(r_Requis);
         attachments.put(p_Fourni, new AttachmentPortFourni(this, p_Fourni, r_Requis));
     }
 
-    public void addAttachmentReceive(Composant composant, Connecteur connecteur, String nomReceive){
+    public void addAttachmentReceive(ComposantAtomique composant, Connecteur connecteur, String nomReceive){
         PortComposantRequis p_Requis = new PortComposantRequis(composant, nomReceive);
         RoleFourni r_Fourni = new RoleFourni(connecteur,nomReceive);
         composant.addPortRequis(p_Requis);
@@ -65,15 +123,15 @@ public class Configuration extends Composant {
         attachments.put(r_Fourni, new AttachmentPortRequis(this, p_Requis, r_Fourni));
     }
 
-    public void addBindingFourni(Composant composant, String nom) {
+    public void addBindingFourni(ComposantAtomique composant, String nom) {
         PortComposantFourni port_comp = new PortComposantFourni(composant, nom);
         PortConfigurationFourni port_conf = new PortConfigurationFourni(this, nom);
-        composant.addPortsFourni(port_comp);
+        composant.addPortFourni(port_comp);
         this.addPortFourni(port_conf);
         bindings.put(port_conf, new BindingFourni(this, port_conf, port_comp));
     }
 
-    public void addBindingRequis(Composant composant, String nom) {
+    public void addBindingRequis(ComposantAtomique composant, String nom) {
         PortComposantRequis port_comp = new PortComposantRequis(composant, nom);
         PortConfigurationRequis port_conf = new PortConfigurationRequis(this, nom);
         composant.addPortRequis(port_comp);
@@ -81,8 +139,11 @@ public class Configuration extends Composant {
         bindings.put(port_comp, new BindingRequis(this, port_conf, port_comp));
     }
 
-    public void sendMessage(PortComposantFourni port, String msg) {
+    public void sendMessage(ConnectionPoint c, String msg) {
 
+        System.out.println("att = " + attachments.get(c));
+        attachments.get(c).transmettre();
+        System.out.println("test " + msg);
     }
 
 
