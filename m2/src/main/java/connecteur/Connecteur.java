@@ -3,6 +3,7 @@ package connecteur;
 
 
 import composant.Configuration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +14,13 @@ public class Connecteur {
 
     private Configuration parent;
 
-    private List<RoleFourni> roleFourni;
-    private List<RoleRequis> roleRequis;
+    private List<RoleFourni> rolesFournis;
+    private List<RoleRequis> rolesRequis;
 
     public Connecteur(Configuration parent) {
         this.parent = parent;
-        roleFourni = new ArrayList<RoleFourni>();
-        roleRequis = new ArrayList<RoleRequis>();
+        rolesFournis = new ArrayList<RoleFourni>();
+        rolesRequis = new ArrayList<RoleRequis>();
     }
 
     public Configuration getParent() {
@@ -31,11 +32,31 @@ public class Connecteur {
     }
 
     public void addRoleFourni(RoleFourni r) {
-        roleFourni.add(r);
+        rolesFournis.add(r);
     }
 
     public void addRoleRequis(RoleRequis r) {
-        roleRequis.add(r);
+        rolesRequis.add(r);
+    }
+
+    public RoleFourni getNamedRoleFourni(String roleName) {
+        RoleFourni res = null;
+        for (RoleFourni r : this.rolesFournis) {
+            if (r.getNom() == roleName) {
+                res = r;
+            }
+        }
+        return res;
+    }
+
+    public RoleRequis getNamedRoleRequis(String roleName) {
+        RoleRequis res = null;
+        for (RoleRequis r : this.rolesRequis) {
+            if (r.getNom() == roleName) {
+                res = r;
+            }
+        }
+        return res;
     }
 
 }

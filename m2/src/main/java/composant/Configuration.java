@@ -23,8 +23,8 @@ public class Configuration extends Composant {
     private List<Composant> composants;
     private List<Connecteur> connecteurs;
 
-    private Map<ConnectionPoint, Attachment> attachments;
-    private Map<ConnectionPoint, Binding> bindings;
+    protected Map<ConnectionPoint, Attachment> attachments;
+    protected Map<ConnectionPoint, Binding> bindings;
 
     private List<PortConfigurationFourni> portFournis;
     private List<PortConfigurationRequis> portRequis;
@@ -107,6 +107,7 @@ public class Configuration extends Composant {
         portRequis.setParent(this);
     }
 
+    /*
     public void addAttachmentSend(ComposantAtomique composant, Connecteur connecteur, String nomSend) {
         PortComposantFourni p_Fourni = new PortComposantFourni(composant, nomSend);
         RoleRequis r_Requis = new RoleRequis(connecteur,nomSend);
@@ -138,6 +139,23 @@ public class Configuration extends Composant {
         this.addPortRequis(port_conf);
         bindings.put(port_comp, new BindingRequis(this, port_conf, port_comp));
     }
+    */
+
+    public void attachPortFourni(PortComposantFourni port, RoleRequis role) {
+        attachments.put(port, new AttachmentPortFourni(this, port, role));
+    }
+
+    public void attachRoleFourni(PortComposantRequis port, RoleFourni role) {
+        attachments.put(role, new AttachmentPortRequis(this, port, role));
+    }
+
+    public void bindFourni(PortConfigurationFourni pconf, PortComposantFourni pcomp) {
+        bindings.put(pconf, new BindingFourni(this, pconf, pcomp));
+    }
+
+    public void bindRequis(PortConfigurationRequis pconf, PortComposantRequis pcomp) {
+        bindings.put(pconf, new BindingRequis(this, pconf, pcomp));
+    }
 
     public void sendMessage(ConnectionPoint c, String msg) {
 
@@ -146,5 +164,10 @@ public class Configuration extends Composant {
         System.out.println("test " + msg);
     }
 
+    public void printAttachments() {
+        for (ConnectionPoint c : attachments.keySet()) {
+            System.out.println(attachments.get(c).toString());
+        }
+    }
 
 }

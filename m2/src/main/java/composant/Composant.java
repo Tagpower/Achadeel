@@ -26,19 +26,19 @@ public abstract class Composant {
         this.parent = parent;
     }
 
-//    public List<Port> getPortFournis() {
+//    public List<Port> getPortsFournis() {
 //        return portFournis;
 //    }
 //
-//    public void setPortFournis(List<Port> portFournis) {
+//    public void setPortsFournis(List<Port> portFournis) {
 //        this.portFournis = portFournis;
 //    }
 //
-//    public List<Port> getPortRequis() {
+//    public List<Port> getPortsRequis() {
 //        return portRequis;
 //    }
 //
-//    public void setPortRequis(List<Port> portRequis) {
+//    public void setPortsRequis(List<Port> portRequis) {
 //        this.portRequis = portRequis;
 //    }
 //

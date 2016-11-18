@@ -25,8 +25,13 @@ public class AttachmentPortFourni extends Attachment {
         this.portFourni.setMessage("");
     }
 
+    //DEBUG
+    public String toString() {
+        return portFourni.getParent().getClass().getName()+"."+portFourni.getNom() + " -> " + roleRequis.getParent().getClass().getName()+"." + roleRequis.getNom();
+    }
+
     public void update(Observable o, Object arg) {
-        System.out.println(this.getClass().getName()+".update");
+        System.out.println(this.getClass().getName() + ".update");
         this.setChanged();
         this.notifyObservers(arg);
     }

@@ -31,7 +31,7 @@ public class ServeurConfiguration extends Configuration {
         this.addConnecteur(securityQuery);
         this.addConnecteur(sqlRequest);
 
-
+        /*
         //ajoute des bindings
         this.addBindingFourni(connectionManager, "requestIn");
         this.addBindingRequis(connectionManager, "requestOut");
@@ -54,11 +54,11 @@ public class ServeurConfiguration extends Configuration {
         this.addAttachmentReceive(securityManager, clearanceRequest, "SecurityAuthIn");
         this.addAttachmentSend(securityManager, securityQuery, "CheckQueryOut");
         this.addAttachmentReceive(securityManager, securityQuery, "CheckQueryIn");
-        /*
-        les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
+        */
+        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
         this.addPortFourni(new Server_out(this, "ServeurOut"));
         this.addPortRequis(new Server_in(this, "ServeurIn"));
-        */
+
 
 
         //les bindings et attachements à ajouter

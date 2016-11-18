@@ -29,6 +29,7 @@ public abstract class Binding extends Observable implements Observer {
 //        return this.parent;
 //    }
 //
+
     public void transmettre() {};
 
 

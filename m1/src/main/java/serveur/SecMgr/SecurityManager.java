@@ -11,13 +11,13 @@ import serveur.connectionMgr.SecurityCheck_out;
 public class SecurityManager extends ComposantAtomique {
     public SecurityManager(Composant parent) {
         super(parent);
-        /*
-        les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
+
+        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
 
         this.addPortRequis(new SecurityCheck_in(this, "SecurityCheckIn"));
-        this.addPortsFourni(new SecurityCheck_out(this, "SecurityCheckOut"));
+        this.addPortFourni(new SecurityCheck_out(this, "SecurityCheckOut"));
         this.addPortRequis(new SecurityCheck_in(this, "CheckQueryIn"));
-        this.addPortsFourni(new SecurityCheck_out(this, "CheckQueryOut"));
-        */
+        this.addPortFourni(new SecurityCheck_out(this, "CheckQueryOut"));
+
     }
 }

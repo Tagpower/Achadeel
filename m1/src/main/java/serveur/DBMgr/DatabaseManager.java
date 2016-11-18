@@ -11,12 +11,12 @@ import serveur.connectionMgr.SecurityCheck_out;
 public class DatabaseManager extends ComposantAtomique {
     public DatabaseManager(Composant parent) {
         super(parent);
-        /*
-        les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
+
+        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
         this.addPortRequis(new QueryD_in(this,"QueryDataIn"));
-        this.addPortsFourni(new QueryD_out(this, "QueryDataOut"));
+        this.addPortFourni(new QueryD_out(this, "QueryDataOut"));
         this.addPortRequis(new SecurityCheck_in(this, "SecurityManagementIn"));
-        this.addPortsFourni(new SecurityCheck_out(this, "SecurityManagementOut"));
-        */
+        this.addPortFourni(new SecurityCheck_out(this, "SecurityManagementOut"));
+
     }
 }
