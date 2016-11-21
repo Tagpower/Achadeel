@@ -154,7 +154,7 @@ public class Configuration extends Composant {
         bindings.put(pconf, new BindingRequis(this, pconf, pcomp));
     }
 
-    public void sendMessage(ConnectionPoint c, String msg) {
+    public void sendMessage(ConnectionPoint c, String msg) { //TODO les bindings
         System.out.println("att = " + attachments.get(c));
         attachments.get(c).transmettre();
         System.out.println("test " + msg);

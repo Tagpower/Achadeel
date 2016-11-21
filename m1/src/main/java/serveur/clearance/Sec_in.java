@@ -6,9 +6,8 @@ import connecteur.RoleRequis;
 /**
  * Created by clement on 06/11/16.
  */
-public class Connect_caller extends RoleRequis {
-
-    public Connect_caller(Connecteur parent, String nom) {
+public class Sec_in extends RoleRequis {
+    public Sec_in(Connecteur parent, String nom) {
         super(parent, nom);
     }
 }

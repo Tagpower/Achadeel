@@ -1,9 +1,7 @@
 package serveur;
 
 import composant.Composant;
-import composant.ComposantAtomique;
 import composant.Configuration;
-import connecteur.Connecteur;
 import serveur.DBMgr.DatabaseManager;
 import serveur.SecMgr.SecurityManager;
 import serveur.clearance.ClearanceRequest;
@@ -15,14 +13,22 @@ import serveur.sqlreq.SQLRequest;
  * Created by clement on 03/11/16.
  */
 public class ServeurConfiguration extends Configuration {
+
+    private Server_in server_in;
+    private Server_out server_out;
+
     public ServeurConfiguration(Composant parent){
         super(parent);
-        ComposantAtomique connectionManager = new ConnectionManager(this);
-        ComposantAtomique databaseManager = new DatabaseManager(this);
-        ComposantAtomique securityManager = new SecurityManager(this);
-        Connecteur clearanceRequest = new ClearanceRequest(this);
-        Connecteur securityQuery = new SecurityQuery(this);
-        Connecteur sqlRequest = new SQLRequest(this);
+
+        this.server_in = new Server_in(this, "server_in");
+        this.server_out = new Server_out(this, "server_out");
+
+        ConnectionManager connectionManager = new ConnectionManager(this);
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        SecurityManager securityManager = new SecurityManager(this);
+        ClearanceRequest clearanceRequest = new ClearanceRequest(this);
+        SecurityQuery securityQuery = new SecurityQuery(this);
+        SQLRequest sqlRequest = new SQLRequest(this);
 
         this.addComposant(connectionManager);
         this.addComposant(databaseManager);
@@ -31,6 +37,29 @@ public class ServeurConfiguration extends Configuration {
         this.addConnecteur(securityQuery);
         this.addConnecteur(sqlRequest);
 
+        //TODO bindings
+        this.bindRequis(server_in, connectionManager.getExternal_in());
+        this.bindFourni(server_out, connectionManager.getExternal_out());
+
+
+        //Attachments
+        //SQLrequest
+        this.attachPortFourni(connectionManager.getDbquery_out(), sqlRequest.getConnect_in());
+        this.attachRoleFourni(connectionManager.getDbquery_in(), sqlRequest.getConnect_out());
+        this.attachPortFourni(databaseManager.getQuery_out(), sqlRequest.getDb_in());
+        this.attachRoleFourni(databaseManager.getQuery_in(), sqlRequest.getDb_out());
+        //SecurityQuery
+        this.attachPortFourni(databaseManager.getSec_management_out(), securityQuery.getDb_in());
+        this.attachRoleFourni(databaseManager.getSec_management_in(), securityQuery.getDb_out());
+        this.attachPortFourni(securityManager.getCheck_query_out(), securityQuery.getSec_in());
+        this.attachRoleFourni(securityManager.getCheck_query_in(), securityQuery.getSec_out());
+        //Clearance
+        this.attachPortFourni(securityManager.getSec_auth_out(), clearanceRequest.getSec_in());
+        this.attachRoleFourni(securityManager.getSec_auth_in(), clearanceRequest.getSec_out());
+        this.attachPortFourni(connectionManager.getSec_out(), clearanceRequest.getConnect_in());
+        this.attachRoleFourni(connectionManager.getSec_in(), clearanceRequest.getConnect_out());
+
+
         /*
         //ajoute des bindings
         this.addBindingFourni(connectionManager, "requestIn");
@@ -38,9 +67,8 @@ public class ServeurConfiguration extends Configuration {
         this.addBindingFourni((ComposantAtomique)parent, "requestOut");
         this.addBindingRequis((ComposantAtomique)parent, "requestIn");
 
-
         //ajoute des attachement dans la configuration Serveur
-        this.addAttachmentSend(connectionManager, clearanceRequest, "SecurityCheckOut");
+        this.attachPortFourni(connectionManager., clearanceRequest, "SecurityCheckOut");
         this.addAttachmentReceive(connectionManager, clearanceRequest, "SecurityCheckIn");
         this.addAttachmentSend(connectionManager, sqlRequest, "DatabaseQueryOut");
         this.addAttachmentReceive(connectionManager, sqlRequest, "DatabaseQueryIn");
@@ -55,12 +83,5 @@ public class ServeurConfiguration extends Configuration {
         this.addAttachmentSend(securityManager, securityQuery, "CheckQueryOut");
         this.addAttachmentReceive(securityManager, securityQuery, "CheckQueryIn");
         */
-        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
-        this.addPortFourni(new Server_out(this, "ServeurOut"));
-        this.addPortRequis(new Server_in(this, "ServeurIn"));
-
-
-
-        //les bindings et attachements à ajouter
     }
 }

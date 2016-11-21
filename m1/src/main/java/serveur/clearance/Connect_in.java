@@ -1,14 +1,14 @@
 package serveur.clearance;
 
 import connecteur.Connecteur;
-import connecteur.RoleFourni;
 import connecteur.RoleRequis;
 
 /**
  * Created by clement on 06/11/16.
  */
-public class Sec_caller extends RoleFourni {
-    public Sec_caller(Connecteur parent, String nom) {
+public class Connect_in extends RoleRequis {
+
+    public Connect_in(Connecteur parent, String nom) {
         super(parent, nom);
     }
 }

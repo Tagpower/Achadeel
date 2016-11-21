@@ -7,8 +7,8 @@ import connecteur.RoleRequis;
 /**
  * Created by clement on 06/11/16.
  */
-public class Sec_called extends RoleRequis {
-    public Sec_called(Connecteur parent, String nom) {
+public class Sec_out extends RoleFourni {
+    public Sec_out(Connecteur parent, String nom) {
         super(parent, nom);
     }
 }

@@ -7,14 +7,50 @@ import connecteur.Connecteur;
  */
 public class ClearanceRequest extends Connecteur {
 
+    private Connect_in connect_in;
+    private Connect_out connect_out;
+    private Sec_out sec_out;
+    private Sec_in sec_in;
+
     public ClearanceRequest(Configuration parent) {
         super(parent);
 
-        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
-        this.addRoleRequis(new Connect_caller(this,"connect_caller"));
-        this.addRoleFourni(new Connect_called(this,"connect_called"));
-        this.addRoleRequis(new Sec_called(this, "sec_called"));
-        this.addRoleFourni(new Sec_caller(this, "sec_caller"));
+        this.connect_in = new Connect_in(this,"connect_caller");
+        this.connect_out = new Connect_out(this,"connect_called");
+        this.sec_out = new Sec_out(this, "sec_called");
+        this.sec_in = new Sec_in(this, "sec_caller");
 
+    }
+
+    public Connect_out getConnect_out() {
+        return connect_out;
+    }
+
+    public void setConnect_out(Connect_out connect_out) {
+        this.connect_out = connect_out;
+    }
+
+    public Connect_in getConnect_in() {
+        return connect_in;
+    }
+
+    public void setConnect_in(Connect_in connect_in) {
+        this.connect_in = connect_in;
+    }
+
+    public Sec_in getSec_in() {
+        return sec_in;
+    }
+
+    public void setSec_in(Sec_in sec_in) {
+        this.sec_in = sec_in;
+    }
+
+    public Sec_out getSec_out() {
+        return sec_out;
+    }
+
+    public void setSec_out(Sec_out sec_out) {
+        this.sec_out = sec_out;
     }
 }

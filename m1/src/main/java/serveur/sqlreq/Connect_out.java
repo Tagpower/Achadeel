@@ -1,4 +1,4 @@
-package serveur.secquery;
+package serveur.sqlreq;
 
 import connecteur.Connecteur;
 import connecteur.RoleFourni;
@@ -6,8 +6,8 @@ import connecteur.RoleFourni;
 /**
  * Created by clement on 06/11/16.
  */
-public class Sec_called extends RoleFourni {
-    public Sec_called(Connecteur parent, String nom) {
+public class Connect_out extends RoleFourni {
+    public Connect_out(Connecteur parent, String nom) {
         super(parent, nom);
     }
 }

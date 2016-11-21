@@ -53,8 +53,13 @@ public class ClientServeur extends Configuration {
 
         System.out.println("Bindings = " + getBindings().toString());
 
-        client.sendMessage(client.getNamedPortFourni("send_request"), "AAAAA");
 
+    }
+
+    public void start() {
+
+        client.sendMessage(client.getNamedPortFourni("send_request"), "AAAAA");
+        serveurComposant.sendMessage(serveurComposant.getNamedPortFourni("send_result"), "BBBBB");
 
     }
 

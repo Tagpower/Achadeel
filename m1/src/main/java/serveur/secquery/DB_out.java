@@ -6,8 +6,8 @@ import connecteur.RoleFourni;
 /**
  * Created by clement on 06/11/16.
  */
-public class DB_called extends RoleFourni {
-    public DB_called(Connecteur parent, String nom) {
+public class DB_out extends RoleFourni {
+    public DB_out(Connecteur parent, String nom) {
         super(parent, nom);
     }
 }
