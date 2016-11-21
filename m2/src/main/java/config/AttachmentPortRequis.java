@@ -20,6 +20,14 @@ public class AttachmentPortRequis extends Attachment {
         this.roleFourni = role;
     }
 
+    public PortComposantRequis getPort() {
+        return portRequis;
+    }
+
+    public RoleFourni getRole() {
+        return roleFourni;
+    }
+
     public void transmettre() {
         this.portRequis.setMessage(this.roleFourni.getMessage());
     }

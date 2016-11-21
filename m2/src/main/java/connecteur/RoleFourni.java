@@ -6,6 +6,7 @@ package connecteur;
 public class RoleFourni extends Role {
     public RoleFourni(Connecteur parent,String nom) {
         super(parent, nom);
+        parent.addRoleFourni(this);
     }
 
 //    public void update(Observable o, Object obj) {

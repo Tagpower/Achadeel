@@ -1,6 +1,5 @@
 import client.Client;
 import composant.Configuration;
-import connecteur.Connecteur;
 import rpc.RPC;
 import serveur.ServeurComposant;
 
@@ -11,7 +10,7 @@ public class ClientServeur extends Configuration {
    
     private Client client;
     private ServeurComposant serveurComposant;
-    private Connecteur rpc;
+    private RPC rpc;
     
     public ClientServeur(String nom) {
         super(null);
@@ -36,10 +35,18 @@ public class ClientServeur extends Configuration {
         this.addBindingFourni(client, "ExchangeClientOut");
         */
 
+        /*
         this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getNamedRoleRequis("from_client"));
         this.attachRoleFourni(client.getNamedPortRequis("receive_result"), rpc.getNamedRoleFourni("to_client"));
         this.attachPortFourni(serveurComposant.getNamedPortFourni("send_result"), rpc.getNamedRoleRequis("from_server"));
         this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getNamedRoleFourni("to_server"));
+        */
+
+        this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getFrom_client() );
+        this.attachRoleFourni(client.getNamedPortRequis("receive_result"), rpc.getTo_client());
+        this.attachPortFourni(serveurComposant.getNamedPortFourni("send_result"), rpc.getFrom_server());
+        this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getTo_server());
+
 
         //this.bindRequis(this.);
         printAttachments();

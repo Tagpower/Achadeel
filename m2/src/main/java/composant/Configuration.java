@@ -1,10 +1,7 @@
 package composant;
 
 import config.*;
-import connecteur.Connecteur;
-import connecteur.ConnectionPoint;
-import connecteur.RoleFourni;
-import connecteur.RoleRequis;
+import connecteur.*;
 import port.PortComposantFourni;
 import port.PortComposantRequis;
 import port.PortConfigurationFourni;
@@ -158,12 +155,19 @@ public class Configuration extends Composant {
     }
 
     public void sendMessage(ConnectionPoint c, String msg) {
-
         System.out.println("att = " + attachments.get(c));
         attachments.get(c).transmettre();
         System.out.println("test " + msg);
+        if (c.getParent() instanceof ComposantAtomique) { //Si c'est un port d'un composant qui envoie
+            ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis)attachments.get(c).getRole());
+        } else if (c.getParent() instanceof Connecteur) { //Si c'est un rôle d'un connecteur
+            Composant comp = ((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
+            System.out.println("comp = " + comp.toString());
+        }
+
     }
 
+    //DEBUG
     public void printAttachments() {
         for (ConnectionPoint c : attachments.keySet()) {
             System.out.println(attachments.get(c).toString());

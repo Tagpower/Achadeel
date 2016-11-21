@@ -6,6 +6,7 @@ package connecteur;
 public class RoleRequis extends Role {
     public RoleRequis(Connecteur parent, String nom) {
         super(parent, nom);
+        parent.addRoleRequis(this);
     }
 
 //    public void update(Observable o, Object obj) {
