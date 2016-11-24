@@ -11,6 +11,9 @@ public class ClientServeur extends Configuration {
     private Client client;
     private ServeurComposant serveurComposant;
     private RPC rpc;
+
+    private Client_in client_in;
+    private Client_out client_out;
     
     public ClientServeur(String nom) {
         super(null);
@@ -42,7 +45,7 @@ public class ClientServeur extends Configuration {
         this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getNamedRoleFourni("to_server"));
         */
 
-        this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getFrom_client() );
+        this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getFrom_client());
         this.attachRoleFourni(client.getNamedPortRequis("receive_result"), rpc.getTo_client());
         this.attachPortFourni(serveurComposant.getNamedPortFourni("send_result"), rpc.getFrom_server());
         this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getTo_server());
@@ -57,6 +60,8 @@ public class ClientServeur extends Configuration {
     }
 
     public void start() {
+
+        //this
 
         client.sendMessage(client.getNamedPortFourni("send_request"), "AAAAA");
         serveurComposant.sendMessage(serveurComposant.getNamedPortFourni("send_result"), "BBBBB");

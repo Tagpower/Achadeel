@@ -30,7 +30,7 @@ public class AttachmentPortFourni extends Attachment {
 
     public void transmettre() {
         this.roleRequis.setMessage(this.portFourni.getMessage());
-        this.portFourni.setMessage("");
+        //this.portFourni.setMessage("");
     }
 
     //DEBUG

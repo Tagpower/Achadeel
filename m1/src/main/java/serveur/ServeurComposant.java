@@ -10,15 +10,25 @@ import composant.Configuration;
 public class ServeurComposant extends ComposantAtomique {
 
     Configuration serveurConfiguration;
-    //Receive_request receive_request;
-    //Send_result send_result;
+    private Receive_request receive_request;
+    private Send_result send_result;
 
     public ServeurComposant(Composant parent) {
         super(parent);
         this.serveurConfiguration = new ServeurConfiguration(this);
-        this.addPortFourni(new Send_result(this, "send_result"));
-        this.addPortRequis(new Receive_request(this, "receive_request"));
-        //receive_request = new Receive_request(this, "receive_request");
-        //send_result = new Send_result(this, "send_result");
+        this.send_result = new Send_result(this, "send_result");
+        this.receive_request = new Receive_request(this, "receive_request");
+    }
+
+    public Receive_request getReceive_request() {
+        return receive_request;
+    }
+
+    public Send_result getSend_result() {
+        return send_result;
+    }
+
+    public Configuration getServeurConfiguration() {
+        return serveurConfiguration;
     }
 }

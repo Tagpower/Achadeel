@@ -31,6 +31,4 @@ public abstract class Port extends ConnectionPoint {
         this.parent = parent;
     }
 
-    public void emitMessage(String msg) {}
-
 }
