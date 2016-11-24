@@ -2,6 +2,7 @@ package client;
 
 import composant.ComposantAtomique;
 import composant.Configuration;
+import port.PortComposantRequis;
 
 /**
  * Created by clement on 03/11/16.
@@ -37,5 +38,13 @@ public class Client extends ComposantAtomique {
 
     public SendRequest getSend_request() {
         return send_request;
+    }
+
+    public void treatMessage(PortComposantRequis port) {
+        if (port == this.getReceive_result()) {
+            String messageRecu = port.getMessage();
+            System.out.println("LE CLIENT A RECU LA REPONSE " + messageRecu);
+            this.sendMessage(this.exchange_client_out, messageRecu);
+        }
     }
 }

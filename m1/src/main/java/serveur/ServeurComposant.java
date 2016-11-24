@@ -10,7 +10,7 @@ import port.PortComposantRequis;
  */
 public class ServeurComposant extends ComposantAtomique {
 
-    Configuration serveurConfiguration;
+    ServeurConfiguration serveurConfiguration;
     private Receive_request receive_request;
     private Send_result send_result;
 
@@ -35,7 +35,10 @@ public class ServeurComposant extends ComposantAtomique {
 
     public void treatMessage(PortComposantRequis port) {
         if (port == this.getReceive_request()) {
-            System.out.println("LE SERVEUR A RECU " + port.getMessage());
+            String messageRecu = port.getMessage();
+            System.out.println("LE SERVEUR A RECU " + messageRecu);
+            this.serveurConfiguration.getServer_in().setMessage(messageRecu);
+            this.sendMessage(this.send_result, "BBBBB");
         }
     }
 }

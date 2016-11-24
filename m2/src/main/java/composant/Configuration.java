@@ -153,10 +153,16 @@ public class Configuration extends Composant {
 
     public void sendMessage(ConnectionPoint c, String msg) { //TODO les bindings
         System.out.println("att = " + attachments.get(c));
-        System.out.println("test " + msg);
+        System.out.println("bin = " + bindings.get(c));
+        System.out.println("msg = " + msg);
         if (c instanceof PortComposant) { //Si c'est un port d'un composant qui envoie
-            attachments.get(c).transmettre();
-            ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis) attachments.get(c).getRole());
+            if (attachments.get(c) != null) {
+                attachments.get(c).transmettre();
+                ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis) attachments.get(c).getRole());
+            }
+            if (bindings.get(c) != null) {
+                bindings.get(c).transmettre();
+            }
         } else if (c instanceof PortConfiguration) { //Si c'est un port de conf° fourni
             bindings.get(c).transmettre();
             //((BindingFourni)bindings.get(c)).getP_comp().getParent().

@@ -84,4 +84,12 @@ public class ServeurConfiguration extends Configuration {
         this.addAttachmentReceive(securityManager, securityQuery, "CheckQueryIn");
         */
     }
+
+    public Server_in getServer_in() {
+        return server_in;
+    }
+
+    public Server_out getServer_out() {
+        return server_out;
+    }
 }
