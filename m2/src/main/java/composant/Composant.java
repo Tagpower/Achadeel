@@ -1,7 +1,5 @@
 package composant;
 
-import connecteur.ConnectionPoint;
-
 /**
  * Created by clement on 17/10/16.
  */
@@ -9,7 +7,7 @@ public abstract class Composant {
 
 //    private List<Port> portFournis;
 //    private List<Port> portRequis;
-    private Composant parent;
+    protected Composant parent;
 
 
     public Composant(Composant parent) {
@@ -52,13 +50,15 @@ public abstract class Composant {
 //        portRequis.setParent(this);
 //    }
 
-    public void sendMessage(ConnectionPoint cp, String msg) {
-        if (this instanceof ComposantAtomique) {
-            cp.setMessage(msg);
-            System.out.println(this.getClass().getName() + " envoie le message " + msg + " depuis " + cp.getClass().getName());
-            parent.sendMessage(cp, msg);
-        }
-    }
+//    public void sendMessage(PortComposantFourni cp, String msg) {
+//        if (this instanceof ComposantAtomique) {
+//            cp.setMessage(msg);
+//            System.out.println(this.getClass().getName() + " envoie le message " + msg + " depuis " + cp.getClass().getName());
+//            System.out.println("this.parent = " + this.parent);
+//            this.parent.sendMessage(cp, msg);
+//        }
+//    }
+
 
 
 }

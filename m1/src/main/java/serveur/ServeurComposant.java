@@ -3,6 +3,7 @@ package serveur;
 import composant.Composant;
 import composant.ComposantAtomique;
 import composant.Configuration;
+import port.PortComposantRequis;
 
 /**
  * Created by naixinwang on 07/11/2016.
@@ -30,5 +31,11 @@ public class ServeurComposant extends ComposantAtomique {
 
     public Configuration getServeurConfiguration() {
         return serveurConfiguration;
+    }
+
+    public void treatMessage(PortComposantRequis port) {
+        if (port == this.getReceive_request()) {
+            System.out.println("LE SERVEUR A RECU " + port.getMessage());
+        }
     }
 }

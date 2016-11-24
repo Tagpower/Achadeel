@@ -153,13 +153,19 @@ public class Configuration extends Composant {
 
     public void sendMessage(ConnectionPoint c, String msg) { //TODO les bindings
         System.out.println("att = " + attachments.get(c));
-        attachments.get(c).transmettre();
         System.out.println("test " + msg);
         if (c instanceof PortComposant) { //Si c'est un port d'un composant qui envoie
-            ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis)attachments.get(c).getRole());
+            attachments.get(c).transmettre();
+            ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis) attachments.get(c).getRole());
+        } else if (c instanceof PortConfiguration) { //Si c'est un port de conf° fourni
+            bindings.get(c).transmettre();
+            //((BindingFourni)bindings.get(c)).getP_comp().getParent().
         } else if (c instanceof Role) { //Si c'est un rôle d'un connecteur
-            Composant comp = ((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
+            attachments.get(c).transmettre();
+            ComposantAtomique comp = (ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
             System.out.println("comp = " + comp.toString());
+            comp.treatMessage((PortComposantRequis)attachments.get(c).getPort());
+ //           ((ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent()).treatMessage(((AttachmentPortRequis) attachments.get(c)).getPort());
         }
 
     }
@@ -176,6 +182,10 @@ public class Configuration extends Composant {
         for (ConnectionPoint c : bindings.keySet()) {
             System.out.println(bindings.get(c).toString());
         }
+    }
+
+    public void treatMessage(PortConfigurationRequis port) {
+
     }
 
 }

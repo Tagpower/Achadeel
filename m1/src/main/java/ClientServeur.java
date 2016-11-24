@@ -65,7 +65,7 @@ public class ClientServeur extends Configuration {
         this.client_in.setMessage("hello");
 
         client.sendMessage(client.getSend_request(), "AAAAA");
-        serveurComposant.sendMessage(serveurComposant.getSend_result(), "BBBBB");
+        //serveurComposant.sendMessage(serveurComposant.getSend_result(), "BBBBB");
 
     }
 
