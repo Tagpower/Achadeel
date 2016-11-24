@@ -20,6 +20,11 @@ public class BindingRequis extends Binding {
         p_comp = pcp;
     }
 
+    //DEBUG
+    public String toString() {
+        return this.p_conf.getParent().getClass().getName()+"."+this.p_conf.getNom() + " -> " + this.p_comp.getParent().getClass().getName()+"." + this.p_comp.getNom();
+    }
+
     public void transmettre() {
         this.p_conf.setMessage(this.p_comp.getMessage());
     }

@@ -2,10 +2,7 @@ package composant;
 
 import config.*;
 import connecteur.*;
-import port.PortComposantFourni;
-import port.PortComposantRequis;
-import port.PortConfigurationFourni;
-import port.PortConfigurationRequis;
+import port.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -158,9 +155,9 @@ public class Configuration extends Composant {
         System.out.println("att = " + attachments.get(c));
         attachments.get(c).transmettre();
         System.out.println("test " + msg);
-        if (c.getParent() instanceof ComposantAtomique) { //Si c'est un port d'un composant qui envoie
+        if (c instanceof PortComposant) { //Si c'est un port d'un composant qui envoie
             ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis)attachments.get(c).getRole());
-        } else if (c.getParent() instanceof Connecteur) { //Si c'est un rôle d'un connecteur
+        } else if (c instanceof Role) { //Si c'est un rôle d'un connecteur
             Composant comp = ((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
             System.out.println("comp = " + comp.toString());
         }
@@ -171,6 +168,13 @@ public class Configuration extends Composant {
     public void printAttachments() {
         for (ConnectionPoint c : attachments.keySet()) {
             System.out.println(attachments.get(c).toString());
+        }
+    }
+
+    //DEBUG
+    public void printBindings() {
+        for (ConnectionPoint c : bindings.keySet()) {
+            System.out.println(bindings.get(c).toString());
         }
     }
 

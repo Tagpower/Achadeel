@@ -7,8 +7,18 @@ import composant.Composant;
  */
 public class PortComposant extends Port {
 
+    private Composant parent;
+
     public PortComposant(Composant parent, String nom){
-        super(parent, nom);
+        super(nom);
+        this.parent = parent;
     }
 
+    public Composant getParent() {
+        return parent;
+    }
+
+    public void setParent(Composant parent) {
+        this.parent = parent;
+    }
 }

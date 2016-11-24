@@ -10,7 +10,8 @@ public class PortConfiguration extends Port {
     public Configuration parent;
 
     public PortConfiguration(Configuration parent, String nom) {
-        super(parent, nom);
+        super(nom);
+        this.parent = parent;
     }
 
     public Configuration getParent() {

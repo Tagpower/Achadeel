@@ -5,7 +5,6 @@ package connecteur;
  */
 public abstract class Role extends ConnectionPoint {
     private Connecteur parent;
-    private String nom;
 
     public Role(Connecteur parent, String nom){
         this.parent = parent;

@@ -26,8 +26,8 @@ public class ClientServeur extends Configuration {
         this.addConnecteur(rpc);
 
         //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
-        this.addPortFourni(new Client_out(this, "ClientOut"));
-        this.addPortRequis(new Client_in(this, "ClientIn"));
+        this.client_out = new Client_out(this, "ClientOut");
+        this.client_in = new Client_in(this, "ClientIn");
 
         /*
         this.addAttachmentReceive(serveurComposant,rpc, "ReceiveRequest");
@@ -45,26 +45,27 @@ public class ClientServeur extends Configuration {
         this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getNamedRoleFourni("to_server"));
         */
 
-        this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getFrom_client());
-        this.attachRoleFourni(client.getNamedPortRequis("receive_result"), rpc.getTo_client());
-        this.attachPortFourni(serveurComposant.getNamedPortFourni("send_result"), rpc.getFrom_server());
-        this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getTo_server());
+        this.bindRequis(this.client_in, client.getExchange_client_in());
+        this.bindFourni(this.client_out, client.getExchange_client_out());
 
+        this.attachPortFourni(client.getSend_request(), rpc.getFrom_client());
+        this.attachRoleFourni(client.getReceive_result(), rpc.getTo_client());
+        this.attachPortFourni(serveurComposant.getSend_result(), rpc.getFrom_server());
+        this.attachRoleFourni(serveurComposant.getReceive_request(), rpc.getTo_server());
 
-        //this.bindRequis(this.);
+        //DEBUG
         printAttachments();
-
-        System.out.println("Bindings = " + getBindings().toString());
+        printBindings();
 
 
     }
 
     public void start() {
 
-        //this
+        this.client_in.setMessage("hello");
 
-        client.sendMessage(client.getNamedPortFourni("send_request"), "AAAAA");
-        serveurComposant.sendMessage(serveurComposant.getNamedPortFourni("send_result"), "BBBBB");
+        client.sendMessage(client.getSend_request(), "AAAAA");
+        serveurComposant.sendMessage(serveurComposant.getSend_result(), "BBBBB");
 
     }
 

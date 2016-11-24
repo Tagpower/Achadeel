@@ -1,8 +1,6 @@
 package config;
 
 import composant.Configuration;
-import port.PortComposant;
-import port.PortConfiguration;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -13,8 +11,8 @@ import java.util.Observer;
 public abstract class Binding extends Observable implements Observer {
 
     private Configuration parent;
-    private PortConfiguration p_conf;
-    private PortComposant p_comp;
+    //private PortConfiguration p_conf;
+    //private PortComposant p_comp;
 
     public Binding(Configuration parent) {
         super();
@@ -30,7 +28,11 @@ public abstract class Binding extends Observable implements Observer {
 //    }
 //
 
+
+
     public void transmettre() {};
+
+
 
 
 

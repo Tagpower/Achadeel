@@ -3,10 +3,10 @@ package connecteur;
 /**
  * Created by clement on 14/11/16.
  */
-public class ConnectionPoint {
+public abstract class ConnectionPoint {
 
+    protected String nom;
     private String message;
-    private Object parent;
 
     public String getMessage() {
         return message;
@@ -16,12 +16,11 @@ public class ConnectionPoint {
         this.message = message;
     }
 
-    public Object getParent() {
-        return parent;
+    public String getNom() {
+        return nom;
     }
 
-    public void setParent(Object parent) {
-        this.parent = parent;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-
 }
