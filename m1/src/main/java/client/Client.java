@@ -41,10 +41,13 @@ public class Client extends ComposantAtomique {
     }
 
     public void treatMessage(PortComposantRequis port) {
-        if (port == this.getReceive_result()) {
-            String messageRecu = port.getMessage();
+        String messageRecu = port.getMessage();
+        if (port == this.receive_result) {
             System.out.println("LE CLIENT A RECU LA REPONSE " + messageRecu);
             this.sendMessage(this.exchange_client_out, messageRecu);
+        } else if (port == this.exchange_client_in) {
+            System.out.println("LE CLIENT A RECU UN APPEL " + messageRecu);
+            this.sendMessage(this.send_request, messageRecu);
         }
     }
 }

@@ -4,7 +4,7 @@
 public class App {
 
     public static void main(String args[]) {
-        System.out.println("lole M2");
+        System.out.println("test M2");
     }
 
 }

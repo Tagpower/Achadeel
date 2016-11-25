@@ -144,37 +144,73 @@ public class Configuration extends Composant {
     }
 
     public void bindFourni(PortConfigurationFourni pconf, PortComposantFourni pcomp) {
-        bindings.put(pconf, new BindingFourni(this, pconf, pcomp));
+        bindings.put(pcomp, new BindingFourni(this, pconf, pcomp));
     }
 
     public void bindRequis(PortConfigurationRequis pconf, PortComposantRequis pcomp) {
-        bindings.put(pconf, new BindingRequis(this, pconf, pcomp));
+        bindings.put(pconf, new BindingRequis(this, pconf, pcomp)); //FIXME
     }
 
-    public void sendMessage(ConnectionPoint c, String msg) { //TODO les bindings
-        System.out.println("att = " + attachments.get(c));
-        System.out.println("bin = " + bindings.get(c));
-        System.out.println("msg = " + msg);
-        if (c instanceof PortComposant) { //Si c'est un port d'un composant qui envoie
-            if (attachments.get(c) != null) {
-                attachments.get(c).transmettre();
-                ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis) attachments.get(c).getRole());
-            }
-            if (bindings.get(c) != null) {
-                bindings.get(c).transmettre();
-            }
-        } else if (c instanceof PortConfiguration) { //Si c'est un port de conf° fourni
-            bindings.get(c).transmettre();
-            //((BindingFourni)bindings.get(c)).getP_comp().getParent().
-        } else if (c instanceof Role) { //Si c'est un rôle d'un connecteur
-            attachments.get(c).transmettre();
-            ComposantAtomique comp = (ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
-            System.out.println("comp = " + comp.toString());
-            comp.treatMessage((PortComposantRequis)attachments.get(c).getPort());
- //           ((ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent()).treatMessage(((AttachmentPortRequis) attachments.get(c)).getPort());
+//    public void sendMessage(ConnectionPoint c, String msg) { //TODO les bindings
+//        System.out.println("\natt = " + attachments.get(c));
+//        System.out.println("bin = " + bindings.get(c));
+//        System.out.println("msg = " + msg);
+//        if (c instanceof PortComposant) { //Si c'est un port d'un composant qui envoie
+//            if (attachments.get(c) != null) {
+//                attachments.get(c).transmettre();
+//                ((AttachmentPortFourni)attachments.get(c)).getRole().getParent().processGlue((RoleRequis) attachments.get(c).getRole());
+//            }
+//            if (bindings.get(c) != null) {
+//                bindings.get(c).transmettre();
+//            }
+//        } else if (c instanceof PortConfiguration) { //Si c'est un port de conf° requis
+//            c.setMessage(msg);
+//            bindings.get(c).transmettre();
+//            ((ComposantAtomique)bindings.get(c).getP_comp().getParent()).treatMessage((PortComposantRequis) bindings.get(c).getP_comp());
+//            //((BindingFourni)bindings.get(c)).getP_comp().getParent().
+//        } else if (c instanceof Role) { //Si c'est un rôle d'un connecteur
+//            attachments.get(c).transmettre();
+//            ComposantAtomique comp = (ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent();
+//            //System.out.println("comp = " + comp.toString());
+//            comp.treatMessage((PortComposantRequis)attachments.get(c).getPort());
+// //           ((ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent()).treatMessage(((AttachmentPortRequis) attachments.get(c)).getPort());
+//        }
+//
+//    }
+
+    public void sendMessage(PortComposantFourni port, String msg) {
+        if (attachments.get(port) != null) {
+            attachments.get(port).transmettre();
+            ((AttachmentPortFourni)attachments.get(port)).getRole().getParent().processGlue((RoleRequis) attachments.get(port).getRole());
         }
+        if (bindings.get(port) != null) {
+            bindings.get(port).transmettre();
+        }
+    }
+
+    public void sendMessage(RoleFourni role, String msg) {
+        attachments.get(role).transmettre();
+        ComposantAtomique comp = (ComposantAtomique)((AttachmentPortRequis)attachments.get(role)).getPort().getParent();
+        //System.out.println("comp = " + comp.toString());
+        comp.treatMessage((PortComposantRequis)attachments.get(role).getPort());
+        //           ((ComposantAtomique)((AttachmentPortRequis)attachments.get(c)).getPort().getParent()).treatMessage(((AttachmentPortRequis) attachments.get(c)).getPort());
 
     }
+
+    public void sendMessage(PortConfigurationRequis port, String msg) {
+        System.out.println("port = " + port.toString());
+        port.setMessage(msg);
+        System.out.println("binding = " + bindings.get(port).toString());
+        bindings.get(port).transmettre();
+        System.out.println("pconf = " + ((BindingRequis) bindings.get(port)).getP_conf());
+        System.out.println("pcomp = " + ((BindingRequis) bindings.get(port)).getP_comp());
+        ComposantAtomique comp = (ComposantAtomique)((BindingRequis)bindings.get(port)).getP_comp().getParent();
+        System.out.println("comp = " + comp);
+        comp.treatMessage(((BindingRequis) bindings.get(port)).getP_comp());
+        //((BindingFourni)bindings.get(c)).getP_comp().getParent().
+    }
+
+
 
     //DEBUG
     public void printAttachments() {

@@ -4,8 +4,6 @@ import composant.Configuration;
 import port.PortComposantFourni;
 import port.PortConfigurationFourni;
 
-import java.util.Observable;
-
 /**
  * Created by clement on 17/10/16.
  */
@@ -26,12 +24,16 @@ public class BindingFourni extends Binding {
     }
 
     public void transmettre() {
-        this.p_comp.setMessage(this.p_conf.getMessage());
+        this.p_conf.setMessage(this.p_comp.getMessage());
     }
 
-    public void update(Observable o, Object arg) {
-        this.setChanged();
-        this.notifyObservers(arg);
+    public PortComposantFourni getP_comp() {
+        return p_comp;
+    }
+
+
+    public PortConfigurationFourni getP_conf() {
+        return p_conf;
     }
 
 

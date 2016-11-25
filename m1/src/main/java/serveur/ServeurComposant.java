@@ -39,6 +39,7 @@ public class ServeurComposant extends ComposantAtomique {
             System.out.println("LE SERVEUR A RECU " + messageRecu);
             this.serveurConfiguration.getServer_in().setMessage(messageRecu);
             this.sendMessage(this.send_result, "BBBBB");
+            //TODO serveur detail
         }
     }
 }

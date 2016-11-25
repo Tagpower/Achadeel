@@ -62,9 +62,10 @@ public class ClientServeur extends Configuration {
 
     public void start() {
 
-        this.client_in.setMessage("hello");
+        //this.client_in.setMessage("hello");
+        this.sendMessage(this.client_in, "hello");
 
-        client.sendMessage(client.getSend_request(), "AAAAA");
+        //client.sendMessage(client.getSend_request(), "AAAAA");
         //serveurComposant.sendMessage(serveurComposant.getSend_result(), "BBBBB");
 
     }
