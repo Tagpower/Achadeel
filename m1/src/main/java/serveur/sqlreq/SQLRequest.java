@@ -20,6 +20,10 @@ public class SQLRequest extends Connecteur {
         this.connect_out = new Connect_out(this, "connection_out");
         this.db_in = new DB_in(this, "database_in");
         this.db_out = new DB_out(this, "database_out");
+
+        this.glue.put(this.connect_in, this.db_out);
+        this.glue.put(this.db_in, this.connect_out);
+
         /*
         this.addRoleRequis(new Connect_in(this,"ConnectionCaller"));
         this.addRoleFourni(new Connect_out(this,"ConnectionCalled"));

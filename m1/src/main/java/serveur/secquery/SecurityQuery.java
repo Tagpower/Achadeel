@@ -20,6 +20,10 @@ public class SecurityQuery extends Connecteur {
         this.db_out = new DB_out(this, "DB_out");
         this.sec_in = new Sec_in(this, "security_in");
         this.sec_out = new Sec_out(this, "security_out");
+
+        this.glue.put(this.db_in, this.sec_out);
+        this.glue.put(this.sec_in, this.db_out);
+
         /*
         this.addRoleRequis(new DB_caller(this,"DataCaller"));
         this.addRoleFourni(new DB_called(this, "DataCalled"));

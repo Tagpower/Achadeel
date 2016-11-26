@@ -2,6 +2,7 @@ package serveur.SecMgr;
 
 import composant.Composant;
 import composant.ComposantAtomique;
+import port.PortComposantRequis;
 
 /**
  * Created by clement on 06/11/16.
@@ -45,4 +46,16 @@ public class SecurityManager extends ComposantAtomique {
     public SecurityAuth_out getSec_auth_out() {
         return sec_auth_out;
     }
+
+    public void treatMessage(PortComposantRequis port) {
+        String messageRecu = port.getMessage();
+        if (port == this.sec_auth_in) {
+            System.out.println("Le Security Manager a recu une demande de connexion : " + messageRecu);
+            sendMessage(this.sec_auth_out, messageRecu);
+        } else if (port == this.check_query_in) {
+            System.out.println("Le Security Manager a recu une requête à vérifier : " + messageRecu);
+            sendMessage(this.check_query_out, messageRecu);
+        }
+    }
+
 }

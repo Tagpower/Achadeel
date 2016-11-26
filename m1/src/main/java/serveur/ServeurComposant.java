@@ -34,12 +34,11 @@ public class ServeurComposant extends ComposantAtomique {
     }
 
     public void treatMessage(PortComposantRequis port) {
-        if (port == this.getReceive_request()) {
-            String messageRecu = port.getMessage();
+        String messageRecu = port.getMessage();
+        if (port == this.receive_request) {
             System.out.println("LE SERVEUR A RECU " + messageRecu);
-            this.serveurConfiguration.getServer_in().setMessage(messageRecu);
-            this.sendMessage(this.send_result, "BBBBB");
-            //TODO serveur detail
+            this.serveurConfiguration.sendMessage(serveurConfiguration.getServer_in(), messageRecu);
+            //TODO le binding ext_out -> server_out
         }
     }
 }

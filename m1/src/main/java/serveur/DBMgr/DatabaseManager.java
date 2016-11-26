@@ -2,6 +2,7 @@ package serveur.DBMgr;
 
 import composant.Composant;
 import composant.ComposantAtomique;
+import port.PortComposantRequis;
 
 /**
  * Created by clement on 06/11/16.
@@ -20,6 +21,7 @@ public class DatabaseManager extends ComposantAtomique {
         this.query_out = new QueryD_out(this, "query_out");
         this.sec_management_in = new SecurityManagement_in(this, "security_management_in");
         this.sec_management_out = new SecurityManagement_out(this, "security_management_out");
+
 
         /*
         this.addPortRequis(new QueryD_in(this,"QueryDataIn"));
@@ -46,4 +48,16 @@ public class DatabaseManager extends ComposantAtomique {
     public SecurityManagement_out getSec_management_out() {
         return sec_management_out;
     }
+
+    public void treatMessage(PortComposantRequis port) {
+        String messageRecu = port.getMessage();
+        if (port == this.query_in) {
+            System.out.println("La BDD a reçu une requête : " + messageRecu);
+            sendMessage(this.sec_management_out, messageRecu);
+        } else if (port == this.sec_management_in) {
+            System.out.println("La BDD a reçu une validation : " + messageRecu);
+            sendMessage(this.query_out, messageRecu);
+        }
+    }
+
 }
