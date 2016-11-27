@@ -26,14 +26,7 @@ public class ConnectionManager extends ComposantAtomique {
         this.external_in = new ExternalSocket_in(this, "external_in");
         this.external_out = new ExternalSocket_out(this, "external_out");
 
-        /*
-        this.addPortRequis(new DBQuery_in(this, "InQuery"));
-        this.addPortFourni(new DBQuery_out(this, "OutQuery"));
-        this.addPortRequis(new ExternalSocket_in(this, "SocketIn"));
-        this.addPortFourni(new Exchange_client_out(this, "SocketOut"));
-        this.addPortRequis(new SecurityCheck_in(this, "SecurityCheckIn"));
-        this.addPortFourni(new SecurityCheck_out(this, "SecurityCheckOut"));
-        */
+
     }
 
     public DBQuery_in getDbquery_in() {
@@ -68,7 +61,11 @@ public class ConnectionManager extends ComposantAtomique {
             sendMessage(this.sec_out, messageRecu);
         } else if (port == this.sec_in) {
             System.out.println("Connection Manager a reçu une autorisation de connexion : " + messageRecu);
-            sendMessage(this.dbquery_out, messageRecu);
+            if (messageRecu == "OK") {
+                sendMessage(this.dbquery_out, messageRecu);
+            } else {
+                sendMessage(this.external_out, "Connection refusée");
+            }
         } else if (port == this.dbquery_in) {
             System.out.println("Connection Manager a reçu un résultat de requête : " + messageRecu);
             sendMessage(this.external_out, messageRecu);

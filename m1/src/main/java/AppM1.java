@@ -7,7 +7,10 @@ public class AppM1 {
         System.out.println("test M1");
         ClientServeur cs = new ClientServeur("cs");
 
-        cs.start();
+        cs.start("hello");
+        //cs.start("bonjour");
+        //Scanner sc = new Scanner(System.in);
+        //cs.start(sc.nextLine());
     }
 
 }

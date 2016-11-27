@@ -124,7 +124,6 @@ public class Configuration extends Composant {
         }
         if (bindings.get(port) != null) {
             bindings.get(port).transmettre();
-            //TODO dernier binding
             PortConfigurationFourni portbind = ((BindingFourni) bindings.get(port)).getP_conf();
             portbind.getParent().sendMessage(portbind, msg);
                     //((BindingFourni) bindings.get(port)).getP_conf().getParent().sendMessage(((BindingFourni) bindings.get(port)).getP_conf(), );

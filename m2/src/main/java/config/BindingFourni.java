@@ -20,7 +20,7 @@ public class BindingFourni extends Binding {
 
     //DEBUG
     public String toString() {
-        return p_comp.getParent().getClass().getName()+"."+p_comp.getNom() + " -> " + p_conf.getParent().getClass().getName()+"." + p_conf.getNom();
+        return p_comp.getParent().getClass().getSimpleName()+"."+p_comp.getNom() + " -> " + p_conf.getParent().getClass().getSimpleName()+"." + p_conf.getNom();
     }
 
     public void transmettre() {

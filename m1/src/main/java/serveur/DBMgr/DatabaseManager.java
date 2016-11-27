@@ -23,13 +23,6 @@ public class DatabaseManager extends ComposantAtomique {
         this.sec_management_out = new SecurityManagement_out(this, "security_management_out");
 
 
-        /*
-        this.addPortRequis(new QueryD_in(this,"QueryDataIn"));
-        this.addPortFourni(new QueryD_out(this, "QueryDataOut"));
-        this.addPortRequis(new SecurityCheck_in(this, "SecurityManagementIn"));
-        this.addPortFourni(new SecurityCheck_out(this, "SecurityManagementOut"));
-        */
-
 
     }
 
@@ -55,8 +48,12 @@ public class DatabaseManager extends ComposantAtomique {
             System.out.println("La BDD a reçu une requête : " + messageRecu);
             sendMessage(this.sec_management_out, messageRecu);
         } else if (port == this.sec_management_in) {
-            System.out.println("La BDD a reçu une validation : " + messageRecu);
-            sendMessage(this.query_out, messageRecu);
+            System.out.println("La BDD a reçu une réponse de sécurité : " + messageRecu);
+            if (messageRecu == "OK") {
+                sendMessage(this.query_out, "résultat");
+            } else {
+                sendMessage(this.query_out, "Requête invalide");
+            }
         }
     }
 

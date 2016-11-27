@@ -33,7 +33,7 @@ public class AttachmentPortRequis extends Attachment {
     }
 
     public String toString() {
-        return roleFourni.getParent().getClass().getName()+"."+roleFourni.getNom() + " -> " + portRequis.getParent().getClass().getName()+"." + portRequis.getNom();
+        return roleFourni.getParent().getClass().getSimpleName()+"."+roleFourni.getNom() + " -> " + portRequis.getParent().getClass().getSimpleName()+"." + portRequis.getNom();
     }
 
     public void update(Observable o, Object arg) {

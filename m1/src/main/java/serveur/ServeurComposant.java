@@ -38,7 +38,6 @@ public class ServeurComposant extends ComposantAtomique {
         if (port == this.receive_request) {
             System.out.println("LE SERVEUR A RECU " + messageRecu);
             this.serveurConfiguration.sendMessage(serveurConfiguration.getServer_in(), messageRecu);
-            //TODO le binding ext_out -> server_out
         }
     }
 }

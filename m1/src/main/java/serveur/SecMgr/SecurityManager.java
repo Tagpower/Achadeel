@@ -4,6 +4,9 @@ import composant.Composant;
 import composant.ComposantAtomique;
 import port.PortComposantRequis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by clement on 06/11/16.
  */
@@ -14,6 +17,8 @@ public class SecurityManager extends ComposantAtomique {
     private SecurityAuth_in sec_auth_in;
     private SecurityAuth_out sec_auth_out;
 
+    private List<String> authorized_users;
+
     public SecurityManager(Composant parent) {
         super(parent);
 
@@ -22,12 +27,9 @@ public class SecurityManager extends ComposantAtomique {
         this.sec_auth_in = new SecurityAuth_in(this, "security_auth_in");
         this.sec_auth_out = new SecurityAuth_out(this, "security_auth_out");
 
-        /*
-        this.addPortRequis(new SecurityCheck_in(this, "SecurityCheckIn"));
-        this.addPortFourni(new SecurityCheck_out(this, "SecurityCheckOut"));
-        this.addPortRequis(new SecurityCheck_in(this, "CheckQueryIn"));
-        this.addPortFourni(new SecurityCheck_out(this, "CheckQueryOut"));
-        */
+        this.authorized_users = new ArrayList<String>();
+        this.authorized_users.add("hello");
+        this.authorized_users.add("admin");
 
     }
 
@@ -51,7 +53,11 @@ public class SecurityManager extends ComposantAtomique {
         String messageRecu = port.getMessage();
         if (port == this.sec_auth_in) {
             System.out.println("Le Security Manager a recu une demande de connexion : " + messageRecu);
-            sendMessage(this.sec_auth_out, messageRecu);
+            if (this.authorized_users.contains(messageRecu)) {
+                sendMessage(this.sec_auth_out, "OK");
+            } else {
+                sendMessage(this.sec_auth_out, "KO");
+            }
         } else if (port == this.check_query_in) {
             System.out.println("Le Security Manager a recu une requête à vérifier : " + messageRecu);
             sendMessage(this.check_query_out, messageRecu);

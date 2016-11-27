@@ -72,7 +72,7 @@ public class ComposantAtomique extends Composant {
 
     public void sendMessage(PortComposantFourni cp, String msg) {
         cp.setMessage(msg);
-        System.out.println(this.getClass().getName() + " envoie le message " + msg + " depuis " + cp.getClass().getName());
+        System.out.println(this.getClass().getSimpleName() + " envoie le message " + msg + " depuis " + cp.getClass().getSimpleName());
         //System.out.println("this.parent = " + this.parent);
         ((Configuration)this.parent).sendMessage(cp, msg);
     }

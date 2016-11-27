@@ -46,11 +46,11 @@ public class ClientServeur extends Configuration {
     }
     
     public void sendMessage(PortConfigurationFourni port, String msg) {
-        System.out.println("port.getMessage() = " + port.getMessage());
+        System.out.println(this.getClass().getSimpleName() + " renvoie le message " + port.getMessage());
     }
 
-    public void start() {
-        this.sendMessage(this.client_in, "hello");
+    public void start(String msg) {
+        this.sendMessage(this.client_in, msg);
     }
 
 
