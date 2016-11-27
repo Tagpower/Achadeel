@@ -30,22 +30,6 @@ public class ClientServeur extends Configuration {
         this.client_out = new Client_out(this, "ClientOut");
         this.client_in = new Client_in(this, "ClientIn");
 
-        /*
-        this.addAttachmentReceive(serveurComposant,rpc, "ReceiveRequest");
-        this.addAttachmentSend(serveurComposant, rpc, "SendResult");
-        this.addAttachmentReceive(client,rpc, "ReceiveResult");
-        this.addAttachmentSend(client, rpc, "SendRequest");
-        this.addBindingRequis(client, "ExchangeClientIn");
-        this.addBindingFourni(client, "ExchangeClientOut");
-        */
-
-        /*
-        this.attachPortFourni(client.getNamedPortFourni("send_request"), rpc.getNamedRoleRequis("from_client"));
-        this.attachRoleFourni(client.getNamedPortRequis("receive_result"), rpc.getNamedRoleFourni("to_client"));
-        this.attachPortFourni(serveurComposant.getNamedPortFourni("send_result"), rpc.getNamedRoleRequis("from_server"));
-        this.attachRoleFourni(serveurComposant.getNamedPortRequis("receive_request"), rpc.getNamedRoleFourni("to_server"));
-        */
-
         this.bindRequis(this.client_in, client.getExchange_client_in());
         this.bindFourni(this.client_out, client.getExchange_client_out());
 
@@ -55,8 +39,8 @@ public class ClientServeur extends Configuration {
         this.attachRoleFourni(serveurComposant.getReceive_request(), rpc.getTo_server());
 
         //DEBUG
-        printAttachments();
-        printBindings();
+        //printAttachments();
+        //printBindings();
 
 
     }
@@ -66,10 +50,7 @@ public class ClientServeur extends Configuration {
     }
 
     public void start() {
-
-        //this.client_in.setMessage("hello");
         this.sendMessage(this.client_in, "hello");
-
     }
 
 

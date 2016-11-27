@@ -60,30 +60,8 @@ public class ServeurConfiguration extends Configuration {
         this.attachPortFourni(connectionManager.getSec_out(), clearanceRequest.getConnect_in());
         this.attachRoleFourni(connectionManager.getSec_in(), clearanceRequest.getConnect_out());
 
-
-        /*
-        //ajoute des bindings
-        this.addBindingFourni(connectionManager, "requestIn");
-        this.addBindingRequis(connectionManager, "requestOut");
-        this.addBindingFourni((ComposantAtomique)parent, "requestOut");
-        this.addBindingRequis((ComposantAtomique)parent, "requestIn");
-
-        //ajoute des attachement dans la configuration Serveur
-        this.attachPortFourni(connectionManager., clearanceRequest, "SecurityCheckOut");
-        this.addAttachmentReceive(connectionManager, clearanceRequest, "SecurityCheckIn");
-        this.addAttachmentSend(connectionManager, sqlRequest, "DatabaseQueryOut");
-        this.addAttachmentReceive(connectionManager, sqlRequest, "DatabaseQueryIn");
-
-        this.addAttachmentSend(databaseManager, sqlRequest, "QueryDataOut");
-        this.addAttachmentReceive(databaseManager, sqlRequest, "QueryDataIn");
-        this.addAttachmentSend(databaseManager,securityQuery, "SecurityManagementOut");
-        this.addAttachmentReceive(databaseManager, securityQuery, "SecurityManagementIn");
-
-        this.addAttachmentSend(securityManager, clearanceRequest, "SecurityAuthOut");
-        this.addAttachmentReceive(securityManager, clearanceRequest, "SecurityAuthIn");
-        this.addAttachmentSend(securityManager, securityQuery, "CheckQueryOut");
-        this.addAttachmentReceive(securityManager, securityQuery, "CheckQueryIn");
-        */
+//        printAttachments();
+//        printBindings();
     }
 
     public Server_in getServer_in() {
