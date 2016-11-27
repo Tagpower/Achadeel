@@ -1,5 +1,6 @@
 import client.Client;
 import composant.Configuration;
+import port.PortConfigurationFourni;
 import rpc.RPC;
 import serveur.ServeurComposant;
 
@@ -59,14 +60,15 @@ public class ClientServeur extends Configuration {
 
 
     }
+    
+    public void sendMessage(PortConfigurationFourni port, String msg) {
+        System.out.println("port.getMessage() = " + port.getMessage());
+    }
 
     public void start() {
 
         //this.client_in.setMessage("hello");
         this.sendMessage(this.client_in, "hello");
-
-        //client.sendMessage(client.getSend_request(), "AAAAA");
-        //serveurComposant.sendMessage(serveurComposant.getSend_result(), "BBBBB");
 
     }
 

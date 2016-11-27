@@ -2,6 +2,7 @@ package serveur;
 
 import composant.Composant;
 import composant.Configuration;
+import port.PortConfigurationFourni;
 import serveur.DBMgr.DatabaseManager;
 import serveur.SecMgr.SecurityManager;
 import serveur.clearance.ClearanceRequest;
@@ -92,4 +93,10 @@ public class ServeurConfiguration extends Configuration {
     public Server_out getServer_out() {
         return server_out;
     }
+
+    @Override
+    public void sendMessage(PortConfigurationFourni port, String msg) {
+        ((ServeurComposant)this.parent).sendMessage(((ServeurComposant) this.parent).getSend_result(), msg);
+    }
+
 }

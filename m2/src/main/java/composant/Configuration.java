@@ -185,6 +185,10 @@ public class Configuration extends Composant {
         }
         if (bindings.get(port) != null) {
             bindings.get(port).transmettre();
+            //TODO dernier binding
+            PortConfigurationFourni portbind = ((BindingFourni) bindings.get(port)).getP_conf();
+            portbind.getParent().sendMessage(portbind, msg);
+                    //((BindingFourni) bindings.get(port)).getP_conf().getParent().sendMessage(((BindingFourni) bindings.get(port)).getP_conf(), );
         }
     }
 
@@ -210,7 +214,23 @@ public class Configuration extends Composant {
         //((BindingFourni)bindings.get(c)).getP_comp().getParent().
     }
 
-
+    public void sendMessage(PortConfigurationFourni port, String msg) {
+        System.out.println("this = " + this);
+        System.out.println("port = " + port.toString());
+        System.out.println("parent = " + port.getParent().toString());
+        Composant cc = port.getParent().getParent();
+        if (cc != null) {
+            System.out.println("cc = " + cc);
+        }
+//        port.setMessage(msg);
+//        System.out.println("binding = " + bindings.get(port).toString());
+//        bindings.get(port).transmettre();
+//        System.out.println("pconf = " + ((BindingRequis) bindings.get(port)).getP_conf());
+//        System.out.println("pcomp = " + ((BindingRequis) bindings.get(port)).getP_comp());
+//        ComposantAtomique comp = (ComposantAtomique)((BindingRequis)bindings.get(port)).getP_comp().getParent();
+//        System.out.println("comp = " + comp);
+//        comp.treatMessage(((BindingRequis) bindings.get(port)).getP_comp());
+    }
 
     //DEBUG
     public void printAttachments() {
@@ -226,8 +246,8 @@ public class Configuration extends Composant {
         }
     }
 
-    public void treatMessage(PortConfigurationRequis port) {
-
+    public void treatMessage(PortConfigurationFourni port) {
+        
     }
 
 }
