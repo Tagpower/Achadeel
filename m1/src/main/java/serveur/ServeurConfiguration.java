@@ -38,7 +38,6 @@ public class ServeurConfiguration extends Configuration {
         this.addConnecteur(securityQuery);
         this.addConnecteur(sqlRequest);
 
-        //TODO bindings
         this.bindRequis(server_in, connectionManager.getExternal_in());
         this.bindFourni(server_out, connectionManager.getExternal_out());
 

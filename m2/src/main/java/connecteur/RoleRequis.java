@@ -9,9 +9,4 @@ public class RoleRequis extends Role {
         parent.addRoleRequis(this);
     }
 
-//    public void update(Observable o, Object obj) {
-//        System.out.println(this.getClass().getName()+".update");
-//        this.setChanged();
-//        this.notifyObservers(obj);
-//    }
 }

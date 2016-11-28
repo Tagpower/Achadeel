@@ -12,10 +12,4 @@ public class PortComposantFourni extends PortComposant {
     }
 
 
-//    @Override
-//    public void emitMessage(String msg) {
-//        System.out.println(this.getClass().getName() + msg);
-//        this.getParent().sendMessage(this, msg);
-//    }
-
 }

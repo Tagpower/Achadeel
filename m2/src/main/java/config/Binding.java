@@ -25,24 +25,9 @@ public abstract class Binding {
     public Configuration getParent() {
         return this.parent;
     }
-//
-//    public PortComposant getP_comp() {
-//        return p_comp;
-//    }
-//
-//
-//    public PortConfiguration getP_conf() {
-//        return p_conf;
-//    }
-
-    //
-
 
 
     public abstract void transmettre();
-
-
-
 
 
 }

@@ -29,33 +29,18 @@ public class RPC extends Connecteur {
         return from_client;
     }
 
-    public void setFrom_client(FromClient from_client) {
-        this.from_client = from_client;
-    }
-
     public FromServer getFrom_server() {
         return from_server;
-    }
-
-    public void setFrom_server(FromServer from_server) {
-        this.from_server = from_server;
     }
 
     public ToClient getTo_client() {
         return to_client;
     }
 
-    public void setTo_client(ToClient to_client) {
-        this.to_client = to_client;
-    }
-
     public ToServer getTo_server() {
         return to_server;
     }
 
-    public void setTo_server(ToServer to_server) {
-        this.to_server = to_server;
-    }
 
 
 

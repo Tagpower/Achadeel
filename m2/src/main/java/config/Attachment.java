@@ -4,13 +4,10 @@ import composant.Configuration;
 import connecteur.Role;
 import port.PortComposant;
 
-import java.util.Observable;
-import java.util.Observer;
-
 /**
  * Created by clement on 17/10/16.
  */
-public abstract class Attachment extends Observable implements Observer {
+public abstract class Attachment {
 
     private Configuration parent;
     private PortComposant port;

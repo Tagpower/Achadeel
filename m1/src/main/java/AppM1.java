@@ -7,8 +7,10 @@ public class AppM1 {
         System.out.println("test M1");
         ClientServeur cs = new ClientServeur("cs");
 
-        cs.start("hello requete2");
-        //cs.start("bonjour requete1");
+        cs.start("hello requete1");  //marche
+        //cs.start("bonjour requete1"); //ne marche pas : "bonjour" n'est pas un utilisateur autorisé
+        //cs.start("hello blabla");   //ne marche pas : "blabla" n'est pas une requête valide
+
         //Scanner sc = new Scanner(System.in);
         //cs.start(sc.nextLine());
     }

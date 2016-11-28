@@ -26,7 +26,6 @@ public class ClientServeur extends Configuration {
         this.addComposant(serveurComposant);
         this.addConnecteur(rpc);
 
-        //les port sont ajouter au composant et configuration et connecteur quand le binding ou le attachement sont créé
         this.client_out = new Client_out(this, "ClientOut");
         this.client_in = new Client_in(this, "ClientIn");
 

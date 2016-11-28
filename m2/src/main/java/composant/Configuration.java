@@ -114,7 +114,7 @@ public class Configuration extends Composant {
     }
 
     public void bindRequis(PortConfigurationRequis pconf, PortComposantRequis pcomp) {
-        bindings.put(pconf, new BindingRequis(this, pconf, pcomp)); //FIXME
+        bindings.put(pconf, new BindingRequis(this, pconf, pcomp));
     }
 
     public void sendMessage(PortComposantFourni port, String msg) {
@@ -157,14 +157,6 @@ public class Configuration extends Composant {
         if (cc != null) {
             System.out.println("cc = " + cc);
         }
-//        port.setMessage(msg);
-//        System.out.println("binding = " + bindings.get(port).toString());
-//        bindings.get(port).transmettre();
-//        System.out.println("pconf = " + ((BindingRequis) bindings.get(port)).getP_conf());
-//        System.out.println("pcomp = " + ((BindingRequis) bindings.get(port)).getP_comp());
-//        ComposantAtomique comp = (ComposantAtomique)((BindingRequis)bindings.get(port)).getP_comp().getParent();
-//        System.out.println("comp = " + comp);
-//        comp.treatMessage(((BindingRequis) bindings.get(port)).getP_comp());
     }
 
     //DEBUG
