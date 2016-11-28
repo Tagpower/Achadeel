@@ -16,6 +16,9 @@ public class ConnectionManager extends ComposantAtomique {
     private ExternalSocket_in external_in;
     private ExternalSocket_out external_out;
 
+    private String user;
+    private String request;
+
     public ConnectionManager(Composant parent) {
         super(parent);
 
@@ -57,12 +60,19 @@ public class ConnectionManager extends ComposantAtomique {
     public void treatMessage(PortComposantRequis port) {
         String messageRecu = port.getMessage();
         if (port == this.external_in) {
-            System.out.println("Connection Manager a reçu une demande de connexion : " + messageRecu);
-            sendMessage(this.sec_out, messageRecu);
+            String[] message = messageRecu.split(" ");
+            if (message.length != 2) {
+                sendMessage(this.external_out, "Message mal formé");
+            } else {
+                user = messageRecu.split(" ")[0];
+                request = messageRecu.split(" ")[1];
+                System.out.println("Connection Manager a reçu une demande de connexion : " + user);
+                sendMessage(this.sec_out, user);
+            }
         } else if (port == this.sec_in) {
             System.out.println("Connection Manager a reçu une autorisation de connexion : " + messageRecu);
             if (messageRecu == "OK") {
-                sendMessage(this.dbquery_out, "requete1");
+                sendMessage(this.dbquery_out, request);
             } else {
                 sendMessage(this.external_out, "Connection refusée");
             }

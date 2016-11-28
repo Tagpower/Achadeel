@@ -4,6 +4,9 @@ import composant.Composant;
 import composant.ComposantAtomique;
 import port.PortComposantRequis;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by clement on 06/11/16.
  */
@@ -17,6 +20,8 @@ public class DatabaseManager extends ComposantAtomique {
     private String requete;
     private String resultat;
 
+    private Map<String, String> donnees;
+
     public DatabaseManager(Composant parent) {
         super(parent);
 
@@ -25,7 +30,9 @@ public class DatabaseManager extends ComposantAtomique {
         this.sec_management_in = new SecurityManagement_in(this, "security_management_in");
         this.sec_management_out = new SecurityManagement_out(this, "security_management_out");
 
-
+        this.donnees = new HashMap<String, String>();
+        this.donnees.put("requete1", "resultat1");
+        this.donnees.put("requete2", "resultat2");
 
     }
 
@@ -54,10 +61,8 @@ public class DatabaseManager extends ComposantAtomique {
         } else if (port == this.sec_management_in) {
             System.out.println("La BDD a reçu une réponse de sécurité : " + messageRecu);
             if (messageRecu == "OK") {
-                if (requete.equals("requete1")) {
-                    resultat = "resultat1";
-                } else if (requete.equals("requete2")) {
-                    resultat = "resultat2";
+                if (donnees.get(requete) != null) {
+                    resultat = donnees.get(requete);
                 } else {
                     resultat = "resultat_vide";
                 }
