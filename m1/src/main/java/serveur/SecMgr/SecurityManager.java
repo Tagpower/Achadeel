@@ -60,7 +60,11 @@ public class SecurityManager extends ComposantAtomique {
             }
         } else if (port == this.check_query_in) {
             System.out.println("Le Security Manager a recu une requête à vérifier : " + messageRecu);
-            sendMessage(this.check_query_out, messageRecu);
+            if (messageRecu.contains("requete")) {
+                sendMessage(this.check_query_out, "OK");
+            } else {
+                sendMessage(this.check_query_out, "KO");
+            }
         }
     }
 

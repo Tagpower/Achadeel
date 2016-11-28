@@ -14,6 +14,9 @@ public class DatabaseManager extends ComposantAtomique {
     private SecurityManagement_in sec_management_in;
     private SecurityManagement_out sec_management_out;
 
+    private String requete;
+    private String resultat;
+
     public DatabaseManager(Composant parent) {
         super(parent);
 
@@ -46,11 +49,19 @@ public class DatabaseManager extends ComposantAtomique {
         String messageRecu = port.getMessage();
         if (port == this.query_in) {
             System.out.println("La BDD a reçu une requête : " + messageRecu);
+            this.requete = messageRecu;
             sendMessage(this.sec_management_out, messageRecu);
         } else if (port == this.sec_management_in) {
             System.out.println("La BDD a reçu une réponse de sécurité : " + messageRecu);
             if (messageRecu == "OK") {
-                sendMessage(this.query_out, "résultat");
+                if (requete.equals("requete1")) {
+                    resultat = "resultat1";
+                } else if (requete.equals("requete2")) {
+                    resultat = "resultat2";
+                } else {
+                    resultat = "resultat_vide";
+                }
+                sendMessage(this.query_out, resultat);
             } else {
                 sendMessage(this.query_out, "Requête invalide");
             }

@@ -62,7 +62,7 @@ public class ConnectionManager extends ComposantAtomique {
         } else if (port == this.sec_in) {
             System.out.println("Connection Manager a reçu une autorisation de connexion : " + messageRecu);
             if (messageRecu == "OK") {
-                sendMessage(this.dbquery_out, messageRecu);
+                sendMessage(this.dbquery_out, "requete1");
             } else {
                 sendMessage(this.external_out, "Connection refusée");
             }

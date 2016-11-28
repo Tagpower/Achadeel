@@ -11,5 +11,4 @@ public class PortComposantRequis extends PortComposant {
         super(parent, nom);
     }
 
-
 }

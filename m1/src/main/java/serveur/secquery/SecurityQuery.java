@@ -24,12 +24,6 @@ public class SecurityQuery extends Connecteur {
         this.glue.put(this.db_in, this.sec_out);
         this.glue.put(this.sec_in, this.db_out);
 
-        /*
-        this.addRoleRequis(new DB_caller(this,"DataCaller"));
-        this.addRoleFourni(new DB_called(this, "DataCalled"));
-        this.addRoleRequis(new Sec_caller(this, "SecurityCaller"));
-        this.addRoleFourni(new Sec_called(this, "SecurityCalled"));
-        */
     }
 
     public DB_out getDb_out() {

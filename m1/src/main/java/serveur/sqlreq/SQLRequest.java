@@ -24,12 +24,6 @@ public class SQLRequest extends Connecteur {
         this.glue.put(this.connect_in, this.db_out);
         this.glue.put(this.db_in, this.connect_out);
 
-        /*
-        this.addRoleRequis(new Connect_in(this,"ConnectionCaller"));
-        this.addRoleFourni(new Connect_out(this,"ConnectionCalled"));
-        this.addRoleRequis(new DB_in(this, "DateCaller"));
-        this.addRoleFourni(new DB_out(this, "Datacalled"));
-        */
     }
 
     public Connect_in getConnect_in() {
